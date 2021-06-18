@@ -4,13 +4,19 @@
     "module": "commonjs",
     "strict": true,
     "target": "es6",
-    "baseUrl": ".",
+    "baseUrl": "src",
+    "rootDir": "src",
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "#/*": [
+        "*"
+      ]
+    },
   },
   "include": [
     "src"
