@@ -1,15 +1,11 @@
+require('reflect-metadata');
 import moduleAlias from 'module-alias';
 moduleAlias.addAlias('#', __dirname);
 
-import express from 'express';
-import file from '#/file';
+import {server} from '#/server';
 
-const app = express();
+const port = 8080;
 
-const PORT = 8000;
-
-app.get('/', (req, res) => res.send(file));
-
-app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+server.listen(port, () => {
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

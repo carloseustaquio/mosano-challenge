@@ -5,7 +5,9 @@
 	],
 	"scripts": {
 		"prepare": "husky install",
-		"lint:all": "cd backend && yarn lint:fix"
+		"lint:all": "cd backend && yarn lint:fix",
+		"dev:backend": "cd backend && yarn dev",
+		"dev:frontend": "echo 'missing frontend yet :('"
 	},
 	"lint-staged": {
 		"**/*.+(ts)": [
