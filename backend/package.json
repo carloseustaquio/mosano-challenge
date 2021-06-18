@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:carloseustaquio/mosano-challenge.git",
+  "author": "Carlos Eustáquio <caeu227@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn tsc",
+    "dev": "tsnd --respawn --transpile-only src/index.ts",
+    "lint": "eslint --ext .ts .",
+    "lint:fix": "yarn lint --fix"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/node": "^15.12.2",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.3.4"
+  }
+}
