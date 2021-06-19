@@ -1,9 +1,15 @@
-import {Country} from '#/country/domain/entities/country';
 import {User} from '#/user/domain/entities/user';
 import {ListUsersRepository} from '#/user/domain/repositories/list-users-repository';
+import {inMemoryUserTable} from '#/user/infrastructure/in-memory-user-table';
 
 export class DbListUsersRepository implements ListUsersRepository {
-  public getUsers(): Promise<User[]> {
-    return Promise.resolve([new User('1', 'Carlos', 'Eustáquio', new Country('1', 'Brasil'), new Date('1999-07-22'))]);
-  }
+	private readonly dbClient = inMemoryUserTable
+
+	public getUsers(): Promise<User[]> {
+	  const users = [];
+	  for (const user of this.dbClient.values()) {
+	    users.push(user);
+	  }
+	  return Promise.resolve(users);
+	}
 }
