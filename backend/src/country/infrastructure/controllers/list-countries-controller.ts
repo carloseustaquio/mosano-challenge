@@ -11,7 +11,6 @@ export class ListCountriesController {
   @Get('/country')
   public async getAll(@Res() response: Response) {
     this.listCountriesCommand.onSuccess = this.onSuccess(response);
-    this.listCountriesCommand.onError = this.onError(response);
 
     await this.listCountriesCommand.getCountries();
 
@@ -21,12 +20,6 @@ export class ListCountriesController {
   private onSuccess(response: Response) {
     return (countries: Country[]) => {
       response.status(StatusCodes.OK).send(countries);
-    };
-  }
-
-  private onError(response: Response) {
-    return (error: Error) => {
-      response.status(StatusCodes.INTERNAL_SERVER_ERROR).send({error: error.message});
     };
   }
 }

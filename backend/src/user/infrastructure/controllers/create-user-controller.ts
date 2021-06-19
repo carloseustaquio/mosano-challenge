@@ -12,7 +12,6 @@ export class CreateUserController {
   @Post('/user')
   public async create(@Res() response: Response, @Body() body: CreateUserRequest) {
     this.createUserCommand.onSuccess = this.onSuccess(response);
-    this.createUserCommand.onError = this.onError(response);
 
     await this.createUserCommand.create(body.toDomain());
 
@@ -22,12 +21,6 @@ export class CreateUserController {
   private onSuccess(response: Response) {
     return (users: User) => {
       response.status(StatusCodes.CREATED).send(users);
-    };
-  }
-
-  private onError(response: Response) {
-    return (error: Error) => {
-      response.status(StatusCodes.INTERNAL_SERVER_ERROR).send({error: error.message});
     };
   }
 }

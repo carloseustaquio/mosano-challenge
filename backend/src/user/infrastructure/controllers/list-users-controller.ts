@@ -11,7 +11,6 @@ export class ListUsersController {
   @Get('/user')
   public async getAll(@Res() response: Response) {
     this.listUsersCommand.onSuccess = this.onSuccess(response);
-    this.listUsersCommand.onError = this.onError(response);
 
     await this.listUsersCommand.getUsers();
 
@@ -21,12 +20,6 @@ export class ListUsersController {
   private onSuccess(response: Response) {
     return (users: User[]) => {
       response.status(StatusCodes.OK).send(users);
-    };
-  }
-
-  private onError(response: Response) {
-    return (error: Error) => {
-      response.status(StatusCodes.INTERNAL_SERVER_ERROR).send({error: error.message});
     };
   }
 }
