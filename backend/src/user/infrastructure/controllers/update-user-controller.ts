@@ -4,6 +4,7 @@ import {Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {JsonController, Res, Body, Put, Param} from 'routing-controllers';
 import {UpdateUserRequest} from '#/user/infrastructure/controllers/requests/update-user-request';
+import {BaseError} from '#/common/errors/base-error';
 
 @JsonController()
 export class UpdateUserController {
@@ -15,7 +16,7 @@ export class UpdateUserController {
 		@Body() body: UpdateUserRequest,
 		@Param('id') id: string) {
     this.updateUserCommand.onSuccess = this.onSuccess(response);
-    this.updateUserCommand.onError = this.onError(response);
+    this.updateUserCommand.onUserNotFound = this.onUserNotFound(response);
 
     await this.updateUserCommand.update(body.toDomain(id));
 
@@ -28,9 +29,9 @@ export class UpdateUserController {
     };
   }
 
-  private onError(response: Response) {
-    return (error: Error) => {
-      response.status(StatusCodes.INTERNAL_SERVER_ERROR).send({error: error.message});
+  private onUserNotFound(response: Response) {
+    return (error: BaseError) => {
+      response.status(StatusCodes.NOT_FOUND).send(error.toPlain());
     };
   }
 }
