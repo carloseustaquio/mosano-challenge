@@ -8,6 +8,9 @@ import {DbListUsersRepository} from '#/user/infrastructure/repositories/db-list-
 import {UpdateUserController} from '#/user/infrastructure/controllers/update-user-controller';
 import {UpdateUserCommand} from '#/user/domain/commands/update-user-command';
 import {DbUpdateUserRepository} from '#/user/infrastructure/repositories/db-update-user-repository';
+import {DeleteUserController} from '#/user/infrastructure/controllers/delete-user-controller';
+import {DeleteUserCommand} from '#/user/domain/commands/delete-user-command';
+import {DbDeleteUserRepository} from '#/user/infrastructure/repositories/db-delete-user-repository';
 
 Container.set(
     ListUsersController.name,
@@ -22,4 +25,9 @@ Container.set(
 Container.set(
     UpdateUserController.name,
     new UpdateUserController(new UpdateUserCommand(new DbUpdateUserRepository())),
+);
+
+Container.set(
+    DeleteUserController.name,
+    new DeleteUserController(new DeleteUserCommand(new DbDeleteUserRepository())),
 );
