@@ -1,4 +1,4 @@
-require('reflect-metadata');
+import 'reflect-metadata';
 import moduleAlias from 'module-alias';
 moduleAlias.addAlias('#', __dirname);
 

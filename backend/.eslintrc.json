@@ -21,7 +21,9 @@
         "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
         "new-cap": "off",
         "require-jsdoc": "off",
-        "max-len": ["error", { "code": 120 }]
+        "max-len": ["error", { "code": 120 }],
+        "no-tabs": ["error", { "allowIndentationTabs": true }],
+        "no-mixed-spaces-and-tabs": "off"
     },
     "settings": {
         "import/resolver": {

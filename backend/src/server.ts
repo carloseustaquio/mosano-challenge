@@ -1,7 +1,8 @@
-import {createExpressServer} from 'routing-controllers';
-import {GetUsersController} from '#/user/infrastructure/controllers/get-user-controller';
+import {createExpressServer, useContainer} from 'routing-controllers';
+import {Container} from '#/container';
+
+useContainer(Container.init());
 
 export const server = createExpressServer({
   routePrefix: '/api',
-  controllers: [GetUsersController],
 });
