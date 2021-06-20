@@ -1,10 +1,10 @@
 import {LoginCredentials} from '#/authentication/domain/entities/login-credentials';
 import {InvalidCredentials} from '#/authentication/domain/errors/invalid-credentials-error';
-import {LoginRepository} from '#/authentication/domain/repositories/login-repository';
+import {LoginService} from '#/authentication/domain/services/login-service';
 import inMemoryDb from '#/authentication/infrastructure/in-memory-db';
 import {TokenService} from '#/common/services/token-service';
 
-export class DbLoginRepository implements LoginRepository {
+export class DbLoginService implements LoginService {
 	private readonly dbClient = inMemoryDb
 	private readonly tokenService = new TokenService()
 
