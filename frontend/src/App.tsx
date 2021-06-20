@@ -1,9 +1,5 @@
-import React from 'react';
-
-function App() {
+export const App = () => {
   return (
     <div>Mosano Challenge</div>
   );
-}
-
-export default App;
+};
