@@ -6,13 +6,17 @@
 	],
 	"scripts": {
 		"prepare": "husky install",
-		"lint:all": "cd backend && yarn lint:fix",
+		"lint:frontend": "cd frontend && yarn lint:fix",
+		"lint:backend": "cd backend && yarn lint:fix",
 		"dev:backend": "cd backend && yarn dev",
 		"dev:frontend": "cd frontend && yarn start"
 	},
 	"lint-staged": {
-		"**/*.+(ts)": [
-			"yarn lint:all"
+		"frontend/**/*.+(ts|tsx)": [
+			"yarn lint:frontend"
+		],
+		"backend/**/*.+(ts|tsx)": [
+			"yarn lint:backend"
 		]
 	},
 	"devDependencies": {
