@@ -1,5 +1,5 @@
-export const Text = () => {
+export const Text = ({text}: {text: string}) => {
   return (
-    <h2>Mosano Challenge</h2>
+    <h2>{text}</h2>
   );
 };

@@ -15,12 +15,16 @@
     "@typescript-eslint/parser": "^4.27.0",
     "axios": "^0.21.1",
     "class-transformer": "^0.4.0",
+    "date-fns": "^2.22.1",
     "eslint": "^7.29.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.24.0",
+    "i18next": "^20.3.2",
+    "i18next-browser-languagedetector": "^6.1.2",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -52,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@types/i18next": "^13.0.0",
     "@types/lodash": "^4.14.170",
     "eslint-plugin-import": "^2.23.4"
   }
