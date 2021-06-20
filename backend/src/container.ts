@@ -6,8 +6,8 @@ import {IocAdapter, ClassConstructor} from 'routing-controllers';
 class IocContainer implements IocAdapter {
 	private instances = new Map<string, unknown>()
 
-	get<T>(someClass: ClassConstructor<T>): any {
-	  return this.instances.get(someClass.name);
+	get<T>(someClass: ClassConstructor<T>): T {
+	  return this.instances.get(someClass.name) as T;
 	}
 
 	set(name: string, instance: unknown): void {

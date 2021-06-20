@@ -1,13 +1,14 @@
 import {DeleteUserCommand} from '#/user/domain/commands/delete-user-command';
 import {Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
-import {JsonController, Res, Param, Delete} from 'routing-controllers';
+import {JsonController, Res, Param, Delete, Authorized} from 'routing-controllers';
 import {BaseError} from '#/common/errors/base-error';
 
 @JsonController()
 export class DeleteUserController {
   public constructor(private readonly deleteUserCommand: DeleteUserCommand) {}
 
+  @Authorized()
   @Delete('/user/:id')
   public async delete(
 		@Res() response: Response,

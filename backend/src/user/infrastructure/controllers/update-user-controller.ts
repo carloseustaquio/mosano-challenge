@@ -2,7 +2,7 @@ import {UpdateUserCommand} from '#/user/domain/commands/update-user-command';
 import {User} from '#/user/domain/entities/user';
 import {Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
-import {JsonController, Res, Body, Put, Param} from 'routing-controllers';
+import {JsonController, Res, Body, Put, Param, Authorized} from 'routing-controllers';
 import {UpdateUserRequest} from '#/user/infrastructure/controllers/requests/update-user-request';
 import {BaseError} from '#/common/errors/base-error';
 
@@ -10,6 +10,7 @@ import {BaseError} from '#/common/errors/base-error';
 export class UpdateUserController {
   public constructor(private readonly updateUserCommand: UpdateUserCommand) {}
 
+  @Authorized()
   @Put('/user/:id')
   public async update(
 		@Res() response: Response,
