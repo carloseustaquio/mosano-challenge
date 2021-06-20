@@ -8,6 +8,11 @@ export class ListUsersCommand {
 
 	public async getUsers(): Promise<void> {
 	  const users = await this.listUsersRepository.getUsers();
+
+	  for (const user of users) {
+	    user.withNextBirthdayAndAge();
+	  }
+
 	  this.onSuccess(users);
 	}
 }

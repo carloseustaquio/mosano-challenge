@@ -12,8 +12,8 @@ export class UpdateUserCommand {
 
 	public async update(user: User): Promise<void> {
 	  try {
-	    const response = await this.updateUserRepository.update(user);
-	    this.onSuccess(response);
+	    const updatedUser = await this.updateUserRepository.update(user);
+	    this.onSuccess(updatedUser.withNextBirthdayAndAge());
 	  } catch (error) {
 	    this.handleErrors(error);
 	  }

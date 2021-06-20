@@ -7,7 +7,7 @@ export class CreateUserCommand {
 	public constructor(private createUserRepository: CreateUserRepository) {}
 
 	public async create(user: User): Promise<void> {
-	  const response = await this.createUserRepository.create(user);
-	  this.onSuccess(response);
+	  const createdUser = await this.createUserRepository.create(user);
+	  this.onSuccess(createdUser.withNextBirthdayAndAge());
 	}
 }
