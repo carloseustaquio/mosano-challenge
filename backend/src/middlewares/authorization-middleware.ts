@@ -1,7 +1,8 @@
-import {AuthenticationService} from '#/authentication/domain/services/authentication-service';
-import {Container} from '#/container';
 import {ClassConstructor} from 'class-transformer';
 import {Action} from 'routing-controllers';
+
+import {AuthenticationService} from '#/authentication/domain/services/authentication-service';
+import {Container} from '#/container';
 
 export const authorizationMiddleware = async (action: Action) => {
   const authenticationService = Container.get(AuthenticationService as ClassConstructor<AuthenticationService>);

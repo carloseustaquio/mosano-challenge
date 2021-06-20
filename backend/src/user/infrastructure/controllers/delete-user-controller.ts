@@ -1,7 +1,8 @@
-import {DeleteUserCommand} from '#/user/domain/commands/delete-user-command';
 import {Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {JsonController, Res, Param, Delete, Authorized} from 'routing-controllers';
+
+import {DeleteUserCommand} from '#/user/domain/commands/delete-user-command';
 import {BaseError} from '#/common/errors/base-error';
 
 @JsonController()

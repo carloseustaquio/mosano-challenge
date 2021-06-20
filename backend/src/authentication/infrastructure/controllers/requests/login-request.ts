@@ -1,5 +1,6 @@
-import {LoginCredentials} from '#/authentication/domain/entities/login-credentials';
 import {IsString} from 'class-validator';
+
+import {LoginCredentials} from '#/authentication/domain/entities/login-credentials';
 
 export class LoginRequest {
 	@IsString()

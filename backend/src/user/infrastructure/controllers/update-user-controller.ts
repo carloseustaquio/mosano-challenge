@@ -1,8 +1,9 @@
-import {UpdateUserCommand} from '#/user/domain/commands/update-user-command';
-import {User} from '#/user/domain/entities/user';
 import {Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {JsonController, Res, Body, Put, Param, Authorized} from 'routing-controllers';
+
+import {User} from '#/user/domain/entities/user';
+import {UpdateUserCommand} from '#/user/domain/commands/update-user-command';
 import {UpdateUserRequest} from '#/user/infrastructure/controllers/requests/update-user-request';
 import {BaseError} from '#/common/errors/base-error';
 

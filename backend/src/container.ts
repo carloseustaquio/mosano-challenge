@@ -1,6 +1,7 @@
 import {readdirSync, readFileSync} from 'fs';
-import glob from 'glob';
 import {resolve} from 'path';
+
+import glob from 'glob';
 import {IocAdapter, ClassConstructor} from 'routing-controllers';
 
 class IocContainer implements IocAdapter {

@@ -1,6 +1,7 @@
 import {StatusCodes} from 'http-status-codes';
 import {JsonController, Get, Res} from 'routing-controllers';
 import {Response} from 'express';
+
 import {ListCountriesCommand} from '#/country/domain/command/list-countries-command';
 import {Country} from '#/country/domain/entities/country';
 

@@ -1,6 +1,7 @@
 import {IsDateString, IsNotEmpty, IsString, ValidateNested} from 'class-validator';
 import {Type} from 'class-transformer';
 import {v4 as uuid} from 'uuid';
+
 import {Country} from '#/country/domain/entities/country';
 import {User} from '#/user/domain/entities/user';
 import {CreateUserCountry} from '#/user/infrastructure/controllers/requests/country-request';

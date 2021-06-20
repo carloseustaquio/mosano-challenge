@@ -1,8 +1,9 @@
-import {CreateUserCommand} from '#/user/domain/commands/create-user-command';
-import {User} from '#/user/domain/entities/user';
 import {Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {JsonController, Res, Body, Post, Authorized} from 'routing-controllers';
+
+import {User} from '#/user/domain/entities/user';
+import {CreateUserCommand} from '#/user/domain/commands/create-user-command';
 import {CreateUserRequest} from '#/user/infrastructure/controllers/requests/create-user-request';
 
 @JsonController()

@@ -1,5 +1,5 @@
 import {User} from '#/user/domain/entities/user';
-import {CreateUserRepository} from '../repositories/create-user-repository';
+import {CreateUserRepository} from '#/user/domain/repositories/create-user-repository';
 
 export class CreateUserCommand {
 	public onSuccess!: (user: User) => void;
