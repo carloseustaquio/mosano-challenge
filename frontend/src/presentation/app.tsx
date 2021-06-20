@@ -1,13 +1,13 @@
 import {useEffect} from 'react';
 
-import {useAppDispatch, useAppSelector} from '#/redux/store';
-import {setUsers, greetUser, getUsersThunk} from '#/redux/reducers/user';
+import {useAppDispatch, useAppSelector} from '#/state/store';
+import {setUsers, greetUser, getUsersThunk} from '#/state/reducers/user';
 import {API_URL} from '#/settings';
 import {Text} from '#/text';
-import {AxiosHttpClient} from '#/common/http-client/infrastructure/axios-http-client';
-import {useTranslation, setLanguage} from '#/translation/translation';
-import {SupportedLanguages} from '#/translation/types';
-import {User} from '#/common/entities/user';
+import {AxiosHttpClient} from '#/infrastructure/http-client/axios-http-client';
+import {useTranslation, setLanguage} from '#/presentation/translation/translation';
+import {SupportedLanguages} from '#/presentation/translation/types';
+import {User} from '#/domain/entities/user';
 
 export const App = () => {
   const {users, greetedUser} = useAppSelector(({userState}) => ({

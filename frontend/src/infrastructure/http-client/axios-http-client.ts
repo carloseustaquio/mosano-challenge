@@ -1,9 +1,9 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import {omit} from 'lodash';
 
-import {HttpClientRequest} from '#/common/http-client/protocols/http-client-request';
-import {HttpClientResponse} from '#/common/http-client/protocols/http-client-response';
-import {HttpClient} from '#/common/http-client/protocols/http-client';
+import {HttpClientRequest} from '#/data/protocols/http-client-request';
+import {HttpClientResponse} from '#/data/protocols/http-client-response';
+import {HttpClient} from '#/data/protocols/http-client';
 
 export class AxiosHttpClient implements HttpClient {
   protected readonly axios: AxiosInstance;

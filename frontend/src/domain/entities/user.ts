@@ -1,4 +1,4 @@
-import {Country} from '#/common/entities/country';
+import {Country} from '#/domain/entities/country';
 
 export class User {
   public constructor(

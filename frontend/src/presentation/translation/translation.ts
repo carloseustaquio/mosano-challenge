@@ -3,9 +3,9 @@ import {format as dateFnsFormat} from 'date-fns';
 import {useTranslation as reacti18nextTranslationHook, initReactI18next} from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import {PT_TRANSLATION} from '#/translation/locales/pt';
-import {EN_TRANSLATION} from '#/translation/locales/en';
-import {SupportedLanguages} from '#/translation/types';
+import {PT_TRANSLATION} from '#/presentation/translation/locales/pt';
+import {EN_TRANSLATION} from '#/presentation/translation/locales/en';
+import {SupportedLanguages} from '#/presentation/translation/types';
 
 i18n
     .use(LanguageDetector)

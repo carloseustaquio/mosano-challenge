@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {User} from '#/common/entities/user';
-import {AxiosHttpClient} from '#/common/http-client/infrastructure/axios-http-client';
+import {User} from '#/domain/entities/user';
+import {AxiosHttpClient} from '#/infrastructure/http-client/axios-http-client';
 import {API_URL} from '#/settings';
 
 interface UserState {
