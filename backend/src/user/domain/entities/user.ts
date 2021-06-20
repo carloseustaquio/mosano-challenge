@@ -18,7 +18,6 @@ export class User {
     const day = getDate(this.birthdate) + 1;
     const month = getMonth(this.birthdate);
     const year = getYear(today);
-    console.log({day, month, year});
 
     const possibleNextBirthday = new Date(year, month, day);
 
