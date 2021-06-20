@@ -1,13 +1,14 @@
 {
 	"private": true,
 	"workspaces": [
-		"backend"
+		"backend",
+		"frontend"
 	],
 	"scripts": {
 		"prepare": "husky install",
 		"lint:all": "cd backend && yarn lint:fix",
 		"dev:backend": "cd backend && yarn dev",
-		"dev:frontend": "echo 'missing frontend yet :('"
+		"dev:frontend": "cd frontend && yarn start"
 	},
 	"lint-staged": {
 		"**/*.+(ts)": [
