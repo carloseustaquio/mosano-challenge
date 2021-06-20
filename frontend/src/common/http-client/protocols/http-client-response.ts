@@ -10,6 +10,10 @@ export class HttpClientResponse {
     return plainToClass(DataType, this.data);
   }
 
+  public getArrayData<TResponse>(DataType: ClassConstructor<TResponse>): TResponse[] {
+    return plainToClass(DataType, this.data as unknown[]);
+  }
+
   public getRawData<T = any>(): T {
     return this.data as T;
   }

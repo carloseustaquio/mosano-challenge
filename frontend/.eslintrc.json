@@ -33,9 +33,9 @@
         "react/react-in-jsx-scope": "off",
         "import/order": ["error", {
             "newlines-between": "always",
-            "groups": ["builtin", "external", "internal", "unknown"],
+            "groups": ["builtin", "external", "index", "internal", "unknown"],
             "pathGroups": [
-              { "pattern": "#/**", "group": "internal" }
+                { "pattern": "#/**", "group": "internal" }
             ]
           }]
     },

@@ -1,14 +1,20 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 
-import {Text} from '#/text';
+import {useAppDispatch, useAppSelector} from '#/redux/store';
+import {setUsers, greetUser, getUsersThunk} from '#/redux/reducers/user';
 import {API_URL} from '#/settings';
+import {Text} from '#/text';
 import {AxiosHttpClient} from '#/common/http-client/infrastructure/axios-http-client';
 import {useTranslation, setLanguage} from '#/translation/translation';
-
-import {SupportedLanguages} from './translation/types';
+import {SupportedLanguages} from '#/translation/types';
+import {User} from '#/common/entities/user';
 
 export const App = () => {
-  const [users, setUsers] = useState([]);
+  const {users, greetedUser} = useAppSelector(({userState}) => ({
+    users: userState.users,
+    greetedUser: userState.greetedUser,
+  }));
+  const dispatch = useAppDispatch();
   const {t} = useTranslation();
 
   const getUsers = async () => {
@@ -18,7 +24,12 @@ export const App = () => {
       path: '/user',
     });
 
-    setUsers(response.getRawData());
+    dispatch(getUsersThunk());
+    dispatch(setUsers(response.getArrayData(User)));
+  };
+
+  const handleGreetUser = (user: User) => {
+    dispatch(greetUser(user));
   };
 
   useEffect(() => {
@@ -31,9 +42,14 @@ export const App = () => {
       <button onClick={() => setLanguage(SupportedLanguages.pt)}>PT</button>
       <button onClick={() => setLanguage(SupportedLanguages.en)}>EN</button>
       <div>{t('date', {date: new Date()})}</div>
-      <pre>
-        {JSON.stringify(users, null, 2)}
-      </pre>
+      {users.map((user) => (
+        <button key={user.id} onClick={() => handleGreetUser(user)}>{user.name}</button>
+      ))}
+      <strong>
+        {greetedUser?.name}
+        {greetedUser?.surname}
+        {greetedUser?.birthdate}
+      </strong>
     </div>
   );
 };
