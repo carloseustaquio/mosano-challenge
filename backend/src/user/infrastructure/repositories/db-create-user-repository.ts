@@ -7,7 +7,6 @@ export class DbCreateUserRepository implements CreateUserRepository {
 
 	public async create(user: User): Promise<User> {
 	  this.dbClient.set(user.id, user);
-	  console.log(this.dbClient);
 	  return user;
 	}
 }
