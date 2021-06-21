@@ -1,16 +1,23 @@
-// eslint-disable-next-line no-use-before-define
+/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {persistStore} from 'redux-persist';
 
 import reportWebVitals from '#/config/reportWebVitals';
 import {makeStore} from '#/main/store/make-store';
 import Router from '#/main/router/router';
 
+const store = makeStore();
+const persistor = persistStore(store);
+
 ReactDOM.render(
     <React.StrictMode>
-      <Provider store={makeStore()}>
-        <Router />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router />
+        </PersistGate>
       </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
@@ -20,3 +27,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+/* eslint-enable */

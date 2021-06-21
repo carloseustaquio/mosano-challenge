@@ -1,11 +1,11 @@
 import {RouteProps, Route, Redirect} from 'react-router-dom';
 
 type Props = {
-  isLogged: () => boolean
+  isLogged: boolean
 }
 
 const PrivateRoute: React.FC<RouteProps & Props> = ({isLogged, ...props}: RouteProps & Props) => {
-  return isLogged() ? (
+  return isLogged ? (
     <Route {...props} />
   ) : (
     <Route {...props} component={() => <Redirect to="/login" />} />

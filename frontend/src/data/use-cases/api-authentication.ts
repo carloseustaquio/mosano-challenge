@@ -10,7 +10,7 @@ export class ApiAuthenticationUseCases implements AuthenticationUseCases {
     private readonly cache: Cache,
   ) {}
 
-  public async login(params: LoginParams): Promise<void> {
+  public async login(params: LoginParams): Promise<string> {
     const response = await this.httpClient.request({
       method: 'post',
       path: '/login',
@@ -19,9 +19,7 @@ export class ApiAuthenticationUseCases implements AuthenticationUseCases {
 
     if (!response.hasStatus(StatusCodes.OK)) throw new Error('login failed');
 
-    const token = response.getRawData<{token: string}>().token;
-    this.saveAccessToken(token);
-    return;
+    return response.getRawData<{token: string}>().token;
   }
 
   public logout(): void {
