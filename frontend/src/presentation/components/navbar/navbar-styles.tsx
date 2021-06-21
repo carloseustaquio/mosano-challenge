@@ -18,6 +18,7 @@ export const Logo = styled.div`
 		height: 32px;
 	}
 	p {
+		color: ${({theme}) => theme.colors.primary};
 		margin-top: 5px;
 		font-size: 20px;
 		letter-spacing: 5px;
@@ -25,14 +26,16 @@ export const Logo = styled.div`
 `;
 
 export const LoginLink = styled.a`
-	color: ${({theme}) => theme.colors.text};
+	color: ${({theme}) => theme.colors.primary};
 	cursor: pointer;
 	margin-right: 16px;
-	width: 50px;
+	width: 70px;
 	text-align: center;
+	text-transform: uppercase;
+	font-size: 16px;
 
 	&:hover {
-		text-decoration: underline;
+		font-weight: 600;
 	}
 `;
 
