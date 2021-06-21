@@ -1,6 +1,8 @@
 import {httpClientSingleton} from '#/main/http-client/http-client-singleton';
 import {Navbar} from '#/presentation/components/navbar/navbar';
 
+import {Modal} from '../components/modal/modal';
+
 export const Revisited = () => {
   const handlePut = async () => {
     const response = await httpClientSingleton.request({
@@ -23,6 +25,7 @@ export const Revisited = () => {
     <div>
       <Navbar />
       <button onClick={handlePut}>put data</button>
+      <Modal />
     </div>
   );
 };

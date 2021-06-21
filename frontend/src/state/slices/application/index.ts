@@ -1,5 +1,6 @@
-import {AnyAction, createSlice} from '@reduxjs/toolkit';
+import {AnyAction, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {REHYDRATE} from 'redux-persist';
+import {ReactElement} from 'react';
 
 import {login} from '#/state/slices/application/login';
 import {initialState} from '#/state/slices/application/initial-state';
@@ -10,9 +11,17 @@ export const applicationState = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      state.accessToken = undefined;
-      state.isLogged = false;
       httpClientSingleton.clearAuthorization();
+      return {...state, accessToken: undefined, isLogged: false};
+    },
+    openModal: (state, action: PayloadAction<ReactElement>) => {
+      return {...state, modal: {open: true, component: action.payload}};
+    },
+    closeModal: (state) => {
+      return {...state, modal: {
+        open: false,
+        component: null,
+      }};
     },
   },
   extraReducers: (builder) => {
@@ -21,12 +30,16 @@ export const applicationState = createSlice({
       if (accessToken) {
         httpClientSingleton.setAuthorization(accessToken);
       }
+      return {...state, modal: {open: false, component: null}};
     });
     builder.addCase(login.fulfilled, (state, action) => {
       if (action.payload) {
         httpClientSingleton.setAuthorization(action.payload);
-        state.accessToken = action.payload;
-        state.isLogged = true;
+        return {
+          ...state,
+          accessToken: action.payload,
+          isLogged: true,
+        };
       }
     });
   },
@@ -34,3 +47,5 @@ export const applicationState = createSlice({
 
 export const loginAction = login;
 export const logoutAction = applicationState.actions.logout;
+export const openModalAction = applicationState.actions.openModal;
+export const closeModalAction = applicationState.actions.closeModal;

@@ -9,12 +9,12 @@ export const userState = createSlice({
   initialState,
   reducers: {
     greetUser: (state, action: PayloadAction<User>) => {
-      state.greetedUser = action.payload;
+      return {...state, greetedUser: action.payload};
     },
   },
   extraReducers: (builder) => {
     builder.addCase(getUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
-      state.users = action.payload;
+      return {...state, users: action.payload};
     });
   },
 });

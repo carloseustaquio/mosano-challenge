@@ -7,6 +7,8 @@ import {greetUserAction} from '#/state/slices/user';
 import {getCountriesAction} from '#/state/slices/country';
 import {Navbar} from '#/presentation/components/navbar/navbar';
 
+import {Modal} from '../components/modal/modal';
+
 export const Home = () => {
   const {t} = useTranslation();
   const dispatch = useAppDispatch();
@@ -43,6 +45,7 @@ export const Home = () => {
         {greetedUser?.surname}
         {greetedUser?.birthdate}
       </strong>
+      <Modal />
     </div>
   );
 };

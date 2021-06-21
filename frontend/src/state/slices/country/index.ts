@@ -11,7 +11,7 @@ export const countryState = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCountries.fulfilled, (state, action: PayloadAction<Country[]>) => {
-      state.countries = action.payload;
+      return {...state, countries: action.payload};
     });
   },
 });
