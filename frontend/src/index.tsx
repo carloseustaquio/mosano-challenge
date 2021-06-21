@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistStore} from 'redux-persist';
 
-import reportWebVitals from '#/config/reportWebVitals';
+import reportWebVitals from '#/config/report-web-vitals';
 import {makeStore} from '#/main/store/make-store';
 import Router from '#/main/router/router';
 

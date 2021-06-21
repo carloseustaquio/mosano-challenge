@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {useTranslation} from '#/presentation/translation/translation';
 import {useAppDispatch} from '#/state/hooks';
 import {logoutAction} from '#/state/slices/application';
-import {httpClient} from '#/main/http-client/make-http-client';
+import {httpClientSingleton} from '#/main/http-client/http-client-singleton';
 
 export const Revisited = () => {
   const history = useHistory();
@@ -11,7 +11,7 @@ export const Revisited = () => {
   const dispatch = useAppDispatch();
 
   const handlePut = async () => {
-    const response = await httpClient.request({
+    const response = await httpClientSingleton.request({
       method: 'post',
       path: '/user',
       data: {
