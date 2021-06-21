@@ -13,10 +13,12 @@ export const Logo = styled.div`
 	display: flex;
 	flex-flow: column;
 	align-items: center;
+
 	img {
 		margin-top: 16px;
 		height: 32px;
 	}
+
 	p {
 		color: ${({theme}) => theme.colors.primary};
 		margin-top: 5px;
@@ -50,10 +52,16 @@ export const Language = styled.img`
 
 export const LanguagesWrapper = styled.div`
 	display: flex;
+	flex-flow: column;
 	column-gap: 8px;
+
+	@media screen and (min-width: 450px) {
+		flex-flow: row;
+	}
 `;
 
 export const LeftSide = styled.div`
 	display: flex;
 	column-gap: 16px;
+	align-items: center;
 `;

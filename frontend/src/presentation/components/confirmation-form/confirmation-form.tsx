@@ -1,4 +1,5 @@
 import {useTranslation} from '#/presentation/translation/translation';
+import {Button} from '#/presentation/components/button/button';
 
 import {Container} from './confirmation-form-styles';
 
@@ -14,8 +15,10 @@ export const ConfirmationForm = ({text, onConfirm, onDeny}: Props) => {
   return (
     <Container>
       <h3>{text}</h3>
-      <button onClick={onConfirm} >{t('yes')}</button>
-      <button onClick={onDeny} >{t('no')}</button>
+      <div>
+        <Button onClick={onConfirm}>{t('yes')}</Button>
+        <Button outlined onClick={onDeny} >{t('no')}</Button>
+      </div>
     </Container>
 
   );

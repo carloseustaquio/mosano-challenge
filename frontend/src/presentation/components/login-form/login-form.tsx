@@ -3,6 +3,8 @@ import {useHistory} from 'react-router-dom';
 import {useAppDispatch} from '#/state/hooks';
 import {closeModalAction, loginAction} from '#/state/slices/application';
 
+import {Button} from '../button/button';
+
 export const LoginForm = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
@@ -19,7 +21,7 @@ export const LoginForm = () => {
   return (
     <>
       <div>Login Form</div>
-      <button onClick={handleLogin}>LOGIN</button>
+      <Button onClick={handleLogin}>LOGIN</Button>
     </>
   );
 };

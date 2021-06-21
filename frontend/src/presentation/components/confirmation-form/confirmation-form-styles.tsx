@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	padding: 10%; 
+	width: max-content;
 
-	> button {
-		text-transform: uppercase;
+	div {
+		display: flex;
+		margin-top: 16px;
+		
+		> button {
+			text-transform: uppercase;
+			margin: 0 5px;
+		}
 	}
 `;

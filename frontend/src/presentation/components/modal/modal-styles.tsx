@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.div<{show: boolean}>`
   position: fixed;
   top: ${(props) => props.show ? '50%' : '20%'};
+  left: 50%;
   opacity: ${(props) => props.show ? 1 : 0};
   background: ${({theme}) => theme.colors.gradients.background};
-  width: max-content;
-  left: 50%;
   transform: translate(-50%, -50%);
-  padding: 0 12px 12px;
+  padding: clamp(32px, 48px, 64px);
   transition: top 0.4s ease-out, opacity 0.5s ease-in-out;
   z-index: 10;
+  box-sizing: content-box;
 `;
 
 export const Background = styled.div<{show: boolean}>`
