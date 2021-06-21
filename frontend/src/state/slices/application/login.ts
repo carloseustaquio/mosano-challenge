@@ -4,7 +4,7 @@ import {AsyncThunkConfig} from '#/state/types';
 import {LoginParams} from '#/domain/use-cases/authentication';
 
 export const login = createAsyncThunk<
-  string,
+  void,
   LoginParams,
   AsyncThunkConfig
 >('application/login', async (params, thunkAPI) => {

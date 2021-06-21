@@ -4,5 +4,6 @@ export type LoginParams = {
 }
 
 export interface AuthenticationUseCases {
-	login(params: LoginParams): Promise<string>;
+	login(params: LoginParams): Promise<void>;
+  getAccessToken(): string;
 }

@@ -1,17 +1,13 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
-import {initialState} from '#/state/slices/application/initial-state';
 import {login} from '#/state/slices/application/login';
 
 export const applicationState = createSlice({
   name: 'application',
-  initialState,
+  initialState: {},
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
-      state.isLogged = true;
-    });
+    builder.addCase(login.fulfilled, () => {});
   },
 });
 

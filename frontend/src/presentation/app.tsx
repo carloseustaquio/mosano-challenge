@@ -12,16 +12,18 @@ import {loginAction} from '#/state/slices/application';
 export const App = () => {
   const {t} = useTranslation();
   const dispatch = useAppDispatch();
-  const {users, greetedUser, countries, isLogged} = useAppSelector(({userState, countryState, applicationState}) => ({
+  const {users, greetedUser, countries} = useAppSelector(({userState, countryState}) => ({
     users: userState.users,
     greetedUser: userState.greetedUser,
     countries: countryState.countries,
-    isLogged: applicationState.isLogged,
   }));
 
   const loadData = async () => {
     dispatch(getUsersAction());
     dispatch(getCountriesAction());
+  };
+
+  const handleLogin = () => {
     dispatch(loginAction({email: 'nelson@mosano.eu', password: 'benfica'}));
   };
 
@@ -50,7 +52,7 @@ export const App = () => {
         {greetedUser?.surname}
         {greetedUser?.birthdate}
       </strong>
-      <h1>Is logged? {JSON.stringify(isLogged)}</h1>
+      <button onClick={handleLogin}>LOGIN</button>
     </div>
   );
 };
