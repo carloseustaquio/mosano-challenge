@@ -1,39 +1,30 @@
 import {useEffect} from 'react';
 
-import {useAppDispatch, useAppSelector} from '#/state/store';
-import {setUsers, greetUser, getUsersThunk} from '#/state/reducers/user';
-import {API_URL} from '#/settings';
-import {Text} from '#/text';
-import {AxiosHttpClient} from '#/infrastructure/http-client/axios-http-client';
+import {useAppDispatch, useAppSelector} from '#/state/hooks';
+import {greetUserAction, getUsersAction} from '#/state/slices/user';
+import {Text} from '#/presentation/text';
 import {useTranslation, setLanguage} from '#/presentation/translation/translation';
 import {SupportedLanguages} from '#/presentation/translation/types';
 import {User} from '#/domain/entities/user';
 
 export const App = () => {
+  const {t} = useTranslation();
+  const dispatch = useAppDispatch();
   const {users, greetedUser} = useAppSelector(({userState}) => ({
     users: userState.users,
     greetedUser: userState.greetedUser,
   }));
-  const dispatch = useAppDispatch();
-  const {t} = useTranslation();
 
-  const getUsers = async () => {
-    const httpClient = new AxiosHttpClient(API_URL);
-    const response = await httpClient.request({
-      method: 'get',
-      path: '/user',
-    });
-
-    dispatch(getUsersThunk());
-    dispatch(setUsers(response.getArrayData(User)));
+  const loadData = async () => {
+    dispatch(getUsersAction());
   };
 
   const handleGreetUser = (user: User) => {
-    dispatch(greetUser(user));
+    dispatch(greetUserAction(user));
   };
 
   useEffect(() => {
-    getUsers();
+    loadData();
   }, []);
 
   return (
