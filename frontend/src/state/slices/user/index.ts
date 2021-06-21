@@ -21,4 +21,3 @@ export const userState = createSlice({
 
 export const greetUserAction = userState.actions.greetUser;
 export const getUsersAction = getUsers;
-export const userReducer = userState.reducer;

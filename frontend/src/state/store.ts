@@ -1,11 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit';
 
-import {userReducer} from '#/state/slices/user';
+import {userState} from '#/state/slices/user';
+import {countryState} from '#/state/slices/country';
 import {UseCasesType} from '#/main/use-cases';
 
 export const store = (useCases: UseCasesType) => configureStore({
   reducer: {
-    userState: userReducer,
+    userState: userState.reducer,
+    countryState: countryState.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
