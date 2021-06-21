@@ -24,11 +24,11 @@ export class ApiAuthenticationUseCases implements AuthenticationUseCases {
     return;
   }
 
-  private saveAccessToken(accessToken: string) {
-    this.cache.set('accessToken', {accessToken});
+  public logout(): void {
+    this.cache.delete('accessToken');
   }
 
-  public getAccessToken(): string {
-    return this.cache.get('accessToken');
+  private saveAccessToken(accessToken: string) {
+    this.cache.set('accessToken', {accessToken});
   }
 }

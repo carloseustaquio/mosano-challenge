@@ -5,35 +5,36 @@ import {Text} from '#/presentation/components/text';
 import {useTranslation, setLanguage} from '#/presentation/translation/translation';
 import {SupportedLanguages} from '#/presentation/translation/types';
 import {User} from '#/domain/entities/user';
-import {Country} from '#/domain/entities/country';
+import {useAppSelector, useAppDispatch} from '#/state/hooks';
+import {greetUserAction} from '#/state/slices/user';
+import {getCountriesAction} from '#/state/slices/country';
+import {loginAction} from '#/state/slices/application';
 
-type Props = {
-  users: User[],
-  greetedUser: User | undefined,
-  countries: Country[],
-  handleLogin: () => Promise<void>,
-  handleGreetUser: (user: User) => void,
-  loadData: () => void
-}
-
-export const Home = ({
-  users,
-  greetedUser,
-  countries,
-  handleGreetUser,
-  handleLogin: stateHandleLogin,
-  loadData,
-}: Props) => {
+export const Home = () => {
   const history = useHistory();
   const {t} = useTranslation();
+  const dispatch = useAppDispatch();
+  const {users, greetedUser, countries} = useAppSelector(({userState, countryState}) => ({
+    users: userState.users,
+    greetedUser: userState.greetedUser,
+    countries: countryState.countries,
+  }));
+
+  const loadData = async () => {
+    dispatch(getCountriesAction());
+  };
 
   const handleLogin = async () => {
     try {
-      await stateHandleLogin();
+      await dispatch(loginAction({email: 'nelson@mosano.eu', password: 'benfica'}));
       history.push('/revisited');
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleGreetUser = (user: User) => {
+    dispatch(greetUserAction(user));
   };
 
   useEffect(() => {

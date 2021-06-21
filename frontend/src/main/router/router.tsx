@@ -1,8 +1,9 @@
 import {RouteProps, BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
-import {makeHome} from '#/main/pages/home-factory';
+import {Home} from '#/presentation/pages/home';
 import BasePrivateRoute from '#/presentation/components/private-route/private-route';
 import {makeLocalCache} from '#/main/cache/make-local-cache';
+import {Revisited} from '#/presentation/pages/revisited';
 
 const Router: React.FC = () => {
   const isLogged = () => !!makeLocalCache().get('accessToken');
@@ -10,8 +11,8 @@ const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/home" exact component={makeHome} />
-        <PrivateRoute path="/revisited" component={() => <h1>Logged!</h1>} />
+        <Route path="/home" exact component={Home} />
+        <PrivateRoute path="/revisited" component={Revisited} />
         <Redirect from="/" to="/home" />
       </Switch>
     </BrowserRouter>
