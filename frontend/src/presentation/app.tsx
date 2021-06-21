@@ -7,19 +7,22 @@ import {useTranslation, setLanguage} from '#/presentation/translation/translatio
 import {SupportedLanguages} from '#/presentation/translation/types';
 import {User} from '#/domain/entities/user';
 import {getCountriesAction} from '#/state/slices/country';
+import {loginAction} from '#/state/slices/application';
 
 export const App = () => {
   const {t} = useTranslation();
   const dispatch = useAppDispatch();
-  const {users, greetedUser, countries} = useAppSelector(({userState, countryState}) => ({
+  const {users, greetedUser, countries, isLogged} = useAppSelector(({userState, countryState, applicationState}) => ({
     users: userState.users,
     greetedUser: userState.greetedUser,
     countries: countryState.countries,
+    isLogged: applicationState.isLogged,
   }));
 
   const loadData = async () => {
     dispatch(getUsersAction());
     dispatch(getCountriesAction());
+    dispatch(loginAction({email: 'nelson@mosano.eu', password: 'benfica'}));
   };
 
   const handleGreetUser = (user: User) => {
@@ -47,6 +50,7 @@ export const App = () => {
         {greetedUser?.surname}
         {greetedUser?.birthdate}
       </strong>
+      <h1>Is logged? {JSON.stringify(isLogged)}</h1>
     </div>
   );
 };
