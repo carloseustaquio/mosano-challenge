@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   input[type="password"],

@@ -32,3 +32,10 @@ i18n
 
 export const setLanguage = (language: SupportedLanguages) => i18n.changeLanguage(language);
 export const useTranslation = reacti18nextTranslationHook;
+export const languages =
+  Object
+      .entries(i18n.store.data)
+      .map(([name, {translation}]) => ({
+        name: name as SupportedLanguages,
+        icon: (translation as any).icon,
+      }));
