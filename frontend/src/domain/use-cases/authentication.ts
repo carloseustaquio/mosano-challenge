@@ -5,5 +5,4 @@ export type LoginParams = {
 
 export interface AuthenticationUseCases {
 	login(params: LoginParams): Promise<string>;
-	logout(): void;
 }
