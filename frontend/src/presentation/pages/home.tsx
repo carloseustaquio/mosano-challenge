@@ -1,34 +1,39 @@
 import {useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 
-import {useAppDispatch, useAppSelector} from '#/state/hooks';
-import {greetUserAction, getUsersAction} from '#/state/slices/user';
-import {Text} from '#/presentation/text';
+import {Text} from '#/presentation/components/text';
 import {useTranslation, setLanguage} from '#/presentation/translation/translation';
 import {SupportedLanguages} from '#/presentation/translation/types';
 import {User} from '#/domain/entities/user';
-import {getCountriesAction} from '#/state/slices/country';
-import {loginAction} from '#/state/slices/application';
+import {Country} from '#/domain/entities/country';
 
-export const App = () => {
+type Props = {
+  users: User[],
+  greetedUser: User | undefined,
+  countries: Country[],
+  handleLogin: () => Promise<void>,
+  handleGreetUser: (user: User) => void,
+  loadData: () => void
+}
+
+export const Home = ({
+  users,
+  greetedUser,
+  countries,
+  handleGreetUser,
+  handleLogin: stateHandleLogin,
+  loadData,
+}: Props) => {
+  const history = useHistory();
   const {t} = useTranslation();
-  const dispatch = useAppDispatch();
-  const {users, greetedUser, countries} = useAppSelector(({userState, countryState}) => ({
-    users: userState.users,
-    greetedUser: userState.greetedUser,
-    countries: countryState.countries,
-  }));
 
-  const loadData = async () => {
-    dispatch(getUsersAction());
-    dispatch(getCountriesAction());
-  };
-
-  const handleLogin = () => {
-    dispatch(loginAction({email: 'nelson@mosano.eu', password: 'benfica'}));
-  };
-
-  const handleGreetUser = (user: User) => {
-    dispatch(greetUserAction(user));
+  const handleLogin = async () => {
+    try {
+      await stateHandleLogin();
+      history.push('/revisited');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

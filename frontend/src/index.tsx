@@ -3,14 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
-import {App} from '#/presentation/app';
 import reportWebVitals from '#/config/reportWebVitals';
 import {makeStore} from '#/main/store/make-store';
+import Router from '#/main/router/router';
 
 ReactDOM.render(
     <React.StrictMode>
       <Provider store={makeStore()}>
-        <App />
+        <Router />
       </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
