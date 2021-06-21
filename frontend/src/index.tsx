@@ -8,19 +8,25 @@ import {persistStore} from 'redux-persist';
 import reportWebVitals from '#/config/report-web-vitals';
 import {makeStore} from '#/main/store/make-store';
 import Router from '#/main/router/router';
+import {ThemeProvider} from 'styled-components';
+import {defaultTheme} from '#/presentation/theme/default-theme';
+import {GlobalStyle} from '#/presentation/theme/global-styles';
 
 const store = makeStore();
 const persistor = persistStore(store);
 
 ReactDOM.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={defaultTheme}>
+          <GlobalStyle />
           <Router />
-        </PersistGate>
-      </Provider>
-    </React.StrictMode>,
-    document.getElementById('root'),
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
