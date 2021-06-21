@@ -17,7 +17,7 @@ export const applicationState = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(REHYDRATE, (state, action: AnyAction) => {
-      const accessToken = action.payload.applicationState.accessToken;
+      const accessToken = action.payload?.applicationState?.accessToken;
       if (accessToken) {
         httpClient.setAuthorization(accessToken);
       }

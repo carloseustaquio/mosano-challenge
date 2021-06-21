@@ -18,6 +18,8 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['applicationState'],
+  version: 1,
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
