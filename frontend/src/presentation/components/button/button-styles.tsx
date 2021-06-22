@@ -14,6 +14,7 @@ export const Container = styled.button<{variant: Variants}>`
 	padding: 8px 32px;
 	transition: all 0.2s ease-in-out;
 	text-transform: uppercase;
+	font-size: 16px;
 
 	&:hover {
 		opacity: 0.9;

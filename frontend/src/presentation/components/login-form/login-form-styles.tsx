@@ -6,8 +6,12 @@ export const Form = styled(BaseForm)`
 	flex-flow: column;
 	row-gap: 8px;
 
+	@media screen and (min-width: 450px) {
+		width: 280px;
+	}
+
 	> h3 {
-		margin-bottom: 16px;
+		margin: 16px;
 	}
 `;
 
