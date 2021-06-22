@@ -10,4 +10,12 @@ export const EN_TRANSLATION = {
   confirmLogout: 'Do you want to logout?',
   loginGreeting: 'Hey, welcome!',
   loginError: 'login error',
+  addUserInstruction: 'Add new person',
+  email: 'email',
+  password: 'password',
+  name: 'name',
+  surname: 'surname',
+  country: 'country',
+  birthdate: 'birthdate',
+  save: 'save',
 };

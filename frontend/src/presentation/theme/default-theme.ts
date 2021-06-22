@@ -3,6 +3,7 @@ declare module 'styled-components' {
 		colors: {
 			primary: string,
 			secondary: string,
+			error: string,
 			text: string,
 			lightText: string,
 			gradients: {
@@ -16,7 +17,8 @@ declare module 'styled-components' {
 export const defaultTheme = {
   colors: {
     primary: '#1e22aa',
-    secondary: '#e31c79',
+    secondary: '#632099',
+    error: '#e31c79',
     text: '#0c0d44',
     lightText: '#aaa',
     gradients: {

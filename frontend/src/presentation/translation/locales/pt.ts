@@ -10,4 +10,12 @@ export const PT_TRANSLATION = {
   confirmLogout: 'Quer mesmo sair?',
   loginGreeting: 'Olá, seja bem vindo!',
   loginError: 'erro no login',
+  addUserInstruction: 'Adicionar nova pessoa',
+  email: 'email',
+  password: 'senha',
+  name: 'nome',
+  surname: 'sobrenome',
+  country: 'país',
+  birthdate: 'data de nascimento',
+  save: 'salvar',
 };

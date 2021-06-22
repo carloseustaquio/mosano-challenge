@@ -7,6 +7,8 @@ export const Container = styled.div`
   align-items: center;
   max-width: 100%;
 	background-color: #fff;
+  box-shadow: 1px 1px 11px -8px rgba(0,0,0,0.4);
+  border: solid 1px rgba(0,0,0,0.1);
 
   input {
     border: none;

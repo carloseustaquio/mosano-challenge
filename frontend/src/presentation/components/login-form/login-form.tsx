@@ -35,6 +35,7 @@ export const LoginForm = () => {
     }
     formikHelpers.setSubmitting(false);
   };
+
   return (
     <Formik
       initialValues={initialFormState}
@@ -44,8 +45,8 @@ export const LoginForm = () => {
       {({submitForm}) => (
         <Form>
           <h3>{t('loginGreeting')}</h3>
-          <Field name="email" placeholder="email" as={Input} />
-          <Field name="password" placeholder="password" type="password" as={Input} />
+          <Field name="email" placeholder={t('email')} as={Input} />
+          <Field name="password" placeholder={t('password')} type="password" as={Input} />
           <ButtonWrapper>
             <Button onClick={submitForm}>{t('login')}</Button>
           </ButtonWrapper>
