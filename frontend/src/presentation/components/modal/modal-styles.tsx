@@ -11,6 +11,7 @@ export const Container = styled.div<{show: boolean}>`
   transition: top 0.4s ease-out, opacity 0.5s ease-in-out;
   z-index: 10;
   box-sizing: content-box;
+  border-radius: 4px;
 `;
 
 export const Background = styled.div<{show: boolean}>`

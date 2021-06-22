@@ -8,4 +8,6 @@ export const PT_TRANSLATION = {
   yes: 'sim',
   no: 'não',
   confirmLogout: 'Quer mesmo sair?',
+  loginGreeting: 'Olá, seja bem vindo!',
+  loginError: 'erro no login',
 };

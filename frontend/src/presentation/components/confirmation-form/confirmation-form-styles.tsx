@@ -6,6 +6,7 @@ export const Container = styled.div`
 	div {
 		display: flex;
 		margin-top: 16px;
+		justify-content: center;
 		
 		> button {
 			text-transform: uppercase;

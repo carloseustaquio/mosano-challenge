@@ -8,5 +8,10 @@ export const login = createAsyncThunk<
   LoginParams,
   AsyncThunkConfig
 >('application/login', async (params, thunkAPI) => {
-  return thunkAPI.extra.authenticationUseCases.login(params);
+  try {
+    const result = await thunkAPI.extra.authenticationUseCases.login(params);
+    return result;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
 });

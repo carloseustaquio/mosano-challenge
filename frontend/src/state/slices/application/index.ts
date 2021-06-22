@@ -42,6 +42,7 @@ export const applicationState = createSlice({
         };
       }
     });
+    builder.addCase(login.rejected, () => {});
   },
 });
 

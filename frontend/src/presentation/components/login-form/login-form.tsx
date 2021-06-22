@@ -1,30 +1,57 @@
 import {useHistory} from 'react-router-dom';
+import {Formik, Field, FormikHelpers} from 'formik';
+import {useState} from 'react';
 
 import {useAppDispatch} from '#/state/hooks';
 import {closeModalAction, loginAction} from '#/state/slices/application';
+import {useTranslation} from '#/presentation/translation/translation';
+import {Input} from '#/presentation/components/input/input';
+import {Button} from '#/presentation/components/button/button';
 
-import {Button} from '../button/button';
-import {Input} from '../input/input';
+import {ButtonWrapper, Form, LoginError} from './login-form-styles';
+import schema from './schema';
+
+type FormState = {
+  email: string;
+  password: string;
+}
+
+const initialFormState = {email: '', password: ''};
 
 export const LoginForm = () => {
+  const [loginError, setLoginError] = useState(null);
+  const {t} = useTranslation();
   const history = useHistory();
   const dispatch = useAppDispatch();
 
-  const handleLogin = async () => {
-    try {
-      await dispatch(loginAction({email: 'nelson@mosano.eu', password: 'benfica'}));
+  const handleLogin = async (values: FormState, formikHelpers: FormikHelpers<FormState>) => {
+    formikHelpers.setSubmitting(true);
+    const resultAction = await dispatch(loginAction(values));
+    if (loginAction.fulfilled.match(resultAction)) {
       dispatch(closeModalAction());
       history.push('/revisited');
-    } catch (error) {
-      console.log(error);
+    } else {
+      setLoginError(t('loginError'));
     }
+    formikHelpers.setSubmitting(false);
   };
   return (
-    <>
-      <div>Login Form</div>
-      <Input placeholder="email" type="email" />
-      <Input placeholder="password" type="password" />
-      <Button onClick={handleLogin}>LOGIN</Button>
-    </>
+    <Formik
+      initialValues={initialFormState}
+      validationSchema={schema}
+      onSubmit={handleLogin}
+    >
+      {({submitForm}) => (
+        <Form>
+          <h3>{t('loginGreeting')}</h3>
+          <Field name="email" placeholder="email" as={Input} />
+          <Field name="password" placeholder="password" type="password" as={Input} />
+          <ButtonWrapper>
+            <Button onClick={submitForm}>{t('login')}</Button>
+          </ButtonWrapper>
+          {loginError ? <LoginError>{loginError}</LoginError> : null}
+        </Form>
+      )}
+    </Formik>
   );
 };

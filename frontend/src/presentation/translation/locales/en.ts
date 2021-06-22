@@ -8,4 +8,6 @@ export const EN_TRANSLATION = {
   yes: 'yes',
   no: 'no',
   confirmLogout: 'Do you want to logout?',
+  loginGreeting: 'Hey, welcome!',
+  loginError: 'login error',
 };

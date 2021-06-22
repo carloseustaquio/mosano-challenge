@@ -5,7 +5,6 @@ export const Container = styled.div`
   overflow: hidden;
  	display: flex;
   align-items: center;
-  padding: 0 0 0 14px;
   max-width: 100%;
 	background-color: #fff;
 
@@ -14,14 +13,14 @@ export const Container = styled.div`
     outline: none;
     background: inherit;
   	color: ${({theme}) => theme.colors.text};
-    font-size: 0.9rem;
-    padding: 8px 0;
+    font-size: 16px;
+    padding: 8px 0 8px 14px;
     flex-grow: 1;
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-      font-size: 0.9rem;
+      font-size: 16px;
       -webkit-text-fill-color: ${({theme}) => theme.colors.text};
     }
 
