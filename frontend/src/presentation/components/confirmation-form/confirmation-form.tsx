@@ -4,9 +4,9 @@ import {Button} from '#/presentation/components/button/button';
 import {Container} from './confirmation-form-styles';
 
 type Props = {
-	text: string;
-	onConfirm: () => void;
-	onDeny: () => void;
+  text: string;
+  onConfirm: () => void;
+  onDeny: () => void;
 }
 
 export const ConfirmationForm = ({text, onConfirm, onDeny}: Props) => {

@@ -1,4 +1,4 @@
 export enum SupportedLanguages {
-	pt = 'pt',
-	en = 'en'
+  pt = 'pt',
+  en = 'en'
 }

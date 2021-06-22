@@ -7,7 +7,7 @@ import {Modal} from '#/presentation/components/modal/modal';
 import {Container, Main} from './screen-styles';
 
 type Props = {
-	children: {} | ReactNodeArray
+  children: {} | ReactNodeArray
 }
 
 export const Screen = ({children}: Props) => {

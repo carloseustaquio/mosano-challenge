@@ -33,8 +33,8 @@ export class AxiosHttpClient implements HttpClient {
 
   public clearAuthorization(): void {
     this.axios.defaults.headers = omit(
-        this.axios.defaults.headers,
-        'authorization',
+      this.axios.defaults.headers,
+      'authorization',
     );
   }
 }

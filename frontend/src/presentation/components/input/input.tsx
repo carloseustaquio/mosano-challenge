@@ -2,8 +2,8 @@ import ErrorMessage from './error-message';
 import {Container} from './input-styles';
 
 type Props = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
+React.InputHTMLAttributes<HTMLInputElement>,
+HTMLInputElement
 >;
 
 export const Input = (props: Props) => {

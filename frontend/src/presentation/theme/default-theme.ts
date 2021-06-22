@@ -1,17 +1,17 @@
 declare module 'styled-components' {
   export interface DefaultTheme {
-		colors: {
-			primary: string,
-			secondary: string,
-			error: string,
-			text: string,
-			lightText: string,
-			gradients: {
-				background: string,
-				main: string,
-			}
-		}
-	}
+    colors: {
+      primary: string,
+      secondary: string,
+      error: string,
+      text: string,
+      lightText: string,
+      gradients: {
+        background: string,
+        main: string,
+      }
+    }
+  }
 }
 
 export const defaultTheme = {

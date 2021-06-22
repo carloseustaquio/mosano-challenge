@@ -8,34 +8,34 @@ import {EN_TRANSLATION} from '#/presentation/translation/locales/en';
 import {SupportedLanguages} from '#/presentation/translation/types';
 
 i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      interpolation: {
-        format: (value, format) => {
-          if (value instanceof Date) {
-            const defaultFormat = 'yyyy-MM-dd';
-            return dateFnsFormat(value, format || defaultFormat);
-          }
-          return value;
-        },
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    interpolation: {
+      format: (value, format) => {
+        if (value instanceof Date) {
+          const defaultFormat = 'yyyy-MM-dd';
+          return dateFnsFormat(value, format || defaultFormat);
+        }
+        return value;
       },
-      resources: {
-        [SupportedLanguages.en]: {
-          translation: EN_TRANSLATION,
-        },
-        [SupportedLanguages.pt]: {
-          translation: PT_TRANSLATION,
-        },
+    },
+    resources: {
+      [SupportedLanguages.en]: {
+        translation: EN_TRANSLATION,
       },
-    });
+      [SupportedLanguages.pt]: {
+        translation: PT_TRANSLATION,
+      },
+    },
+  });
 
 export const setLanguage = (language: SupportedLanguages) => i18n.changeLanguage(language);
 export const useTranslation = reacti18nextTranslationHook;
 export const languages =
   Object
-      .entries(i18n.store.data)
-      .map(([name, {translation}]) => ({
-        name: name as SupportedLanguages,
-        icon: (translation as any).icon,
-      }));
+    .entries(i18n.store.data)
+    .map(([name, {translation}]) => ({
+      name: name as SupportedLanguages,
+      icon: (translation as any).icon,
+    }));

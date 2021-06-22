@@ -32,11 +32,11 @@ export const Navbar = () => {
 
   const handleLogout = async () => {
     dispatch(openModalAction(
-        <ConfirmationForm
-          text={t('confirmLogout')}
-          onDeny={() => dispatch(closeModalAction())}
-          onConfirm={handleConfirmLogout}
-        />,
+      <ConfirmationForm
+        text={t('confirmLogout')}
+        onDeny={() => dispatch(closeModalAction())}
+        onConfirm={handleConfirmLogout}
+      />,
     ));
   };
 
@@ -58,7 +58,7 @@ export const Navbar = () => {
           }
         </LanguagesWrapper>
         {
-				!isLogged ?
+          !isLogged ?
       		<LoginLink onClick={handleLogin}>{t('login')}</LoginLink> :
       		<LoginLink onClick={handleLogout}>{t('logout')}</LoginLink>
         }
