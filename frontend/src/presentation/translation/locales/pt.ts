@@ -1,6 +1,7 @@
 export const PT_TRANSLATION = {
   title: 'Desafio Mosano',
   date: '{{-date, dd/MM/yyyy}}',
+  dateFormat: '99/99/9999',
   challenge: 'desafio',
   login: 'entrar',
   logout: 'sair',
@@ -11,6 +12,7 @@ export const PT_TRANSLATION = {
   loginGreeting: 'Olá, seja bem vindo!',
   loginError: 'erro no login',
   addUserInstruction: 'Adicionar nova pessoa',
+  addUserError: 'Erro ao adicionar usuário',
   email: 'email',
   password: 'senha',
   name: 'nome',
@@ -18,4 +20,7 @@ export const PT_TRANSLATION = {
   country: 'país',
   birthdate: 'data de nascimento',
   save: 'salvar',
+  requiredField: 'campo obrigatório',
+  invalidEmailWarning: 'digite um email válido',
+  selectCountry: 'selecione um país',
 };

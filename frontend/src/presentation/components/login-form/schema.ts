@@ -1,8 +1,10 @@
 import * as Yup from 'yup';
 
-export default Yup.object({
-  email: Yup.string()
-      .email('Digite um email válido')
-      .required('Campo Obrigatório!'),
-  password: Yup.string().required('Campo Obrigatório!'),
-});
+export const schema = (t: (text: string) => string ) => {
+  return Yup.object({
+    email: Yup.string()
+      .email(t('invalidEmailWarning'))
+      .required(t('requiredField')),
+    password: Yup.string().required(t('requiredField')),
+  });
+};

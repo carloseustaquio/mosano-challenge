@@ -9,10 +9,10 @@ export enum Variants {
 }
 
 type Props = {
-	children: string,
-	onClick: () => void | Promise<void>,
-	disabled?: boolean,
-	outlined?: boolean
+  children: string,
+  onClick?: () => void | Promise<void>,
+  disabled?: boolean,
+  outlined?: boolean
 }
 
 export const isCondensed = (variant: Variants) => variant === Variants.condensed;
@@ -23,7 +23,7 @@ export const Button = ({children, onClick, disabled, outlined}: Props) => {
 
   const handleClick = async () => {
     setIsLoading(true);
-    await onClick();
+    if (onClick) await onClick();
     setIsLoading(false);
   };
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {useHistory} from 'react-router-dom';
 import {Formik, Field, FormikHelpers} from 'formik';
 import {useState} from 'react';
@@ -9,7 +10,7 @@ import {Input} from '#/presentation/components/input/input';
 import {Button} from '#/presentation/components/button/button';
 
 import {ButtonWrapper, Form, LoginError} from './login-form-styles';
-import schema from './schema';
+import {schema} from './schema';
 
 type FormState = {
   email: string;
@@ -39,7 +40,7 @@ export const LoginForm = () => {
   return (
     <Formik
       initialValues={initialFormState}
-      validationSchema={schema}
+      validationSchema={schema(t)}
       onSubmit={handleLogin}
     >
       {({submitForm}) => (

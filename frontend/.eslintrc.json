@@ -33,6 +33,7 @@
         "no-tabs": ["error", { "allowIndentationTabs": true }],
         "no-mixed-spaces-and-tabs": "off",
         "react/react-in-jsx-scope": "off",
+        "react/display-name": ["off"],
         "import/order": ["error", {
             "newlines-between": "always",
             "groups": ["builtin", "external", "index", "internal", "unknown"],

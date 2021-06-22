@@ -1,58 +1,92 @@
 import {Formik, Field, FormikHelpers} from 'formik';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {v1 as uuid} from 'uuid';
 
 import {Country} from '#/domain/entities/country';
 import {Input} from '#/presentation/components/input/input';
 import {Button} from '#/presentation/components/button/button';
 import {useTranslation} from '#/presentation/translation/translation';
+import {useAppDispatch, useAppSelector} from '#/state/hooks';
+import {addUserAction} from '#/state/slices/user';
+import {User} from '#/domain/entities/user';
+import {getCountriesAction} from '#/state/slices/country';
+import {Select} from '#/presentation/components/select/select';
 
 import {ButtonWrapper, Form, LoginError} from './add-user-form-styles';
+import {schema} from './schema';
 
 type FormState = {
-	name: string,
-	surname: string,
-	country?: Country,
-	birthdate?: Date,
+  name: string,
+  surname: string,
+  countryId: string,
+  birthdate: string,
 }
 
 const initialFormState: FormState = {
   name: '',
   surname: '',
-  country: undefined,
-  birthdate: undefined,
+  countryId: '',
+  birthdate: '',
 };
 
 type Props = {
-	formState?: FormState
+  formState?: FormState
 }
 
 export const AddUserForm = ({formState = initialFormState}: Props) => {
+  const [formError, setFormError] = useState<string | undefined>();
   const {t} = useTranslation();
-  const [loginError] = useState(null);
+  const dispatch = useAppDispatch();
+  const countries = useAppSelector((state) => state.countryState.countries);
 
-  const handleLogin = async (values: FormState, formikHelpers: FormikHelpers<FormState>) => {
+  const handleSubmit = async (values: FormState, formikHelpers: FormikHelpers<FormState>) => {
     formikHelpers.setSubmitting(true);
-    console.log(values);
+    const country = countries.find((c) => c.id == values.countryId);
+    const user = new User(
+      uuid(),
+      values.name,
+      values.surname,
+      country as Country,
+      new Date(values.birthdate),
+    );
+    const actionResult = await dispatch(addUserAction(user));
+
+    if (!addUserAction.fulfilled.match(actionResult)) {
+      setFormError(t('addUserError'));
+    }
+
     formikHelpers.setSubmitting(false);
   };
+
+  const loadData = async () => {
+    dispatch(getCountriesAction());
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   return (
     <Formik
       initialValues={formState}
-      // validationSchema={schema}
-      onSubmit={handleLogin}
+      validationSchema={schema(t)}
+      onSubmit={handleSubmit}
     >
-      {({submitForm}) => (
+      {() => (
         <Form>
           <h2>{t('addUserInstruction')}</h2>
           <Field name="name" placeholder={t('name')} as={Input} />
           <Field name="surname" placeholder={t('surname')} as={Input} />
-          <Field name="country" placeholder={t('country')} as={Input} />
-          <Field name="birthdate" placeholder={(t('birthdate'))} type="date" as={Input} />
+          <Field as={Select} name="countryId" placeholder={t('selectCountry')} autocomplete={false}>
+            {countries.map((country) => (
+              <option key={country.id} value={country.id}>{country.name}</option>
+            ))}
+          </Field>
+          <Field name="birthdate" placeholder={(t('birthdate'))} as={Input} type="date" mask={t('dateFormat')} />
           <ButtonWrapper>
-            <Button outlined onClick={submitForm}>{t('save')}</Button>
+            <Button outlined>{t('save')}</Button>
           </ButtonWrapper>
-          {loginError ? <LoginError>{loginError}</LoginError> : null}
+          {formError ? <LoginError>{formError}</LoginError> : null}
         </Form>
       )}
     </Formik>

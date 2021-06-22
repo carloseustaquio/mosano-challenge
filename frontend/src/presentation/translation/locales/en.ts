@@ -1,6 +1,7 @@
 export const EN_TRANSLATION = {
   title: 'Mosano Challenge',
   date: '{{-date, MM-dd-yyyy}}',
+  dateFormat: '99-99-9999',
   challenge: 'challenge',
   login: 'login',
   logout: 'logout',
@@ -11,6 +12,7 @@ export const EN_TRANSLATION = {
   loginGreeting: 'Hey, welcome!',
   loginError: 'login error',
   addUserInstruction: 'Add new person',
+  addUserError: 'Error while adding user',
   email: 'email',
   password: 'password',
   name: 'name',
@@ -18,4 +20,7 @@ export const EN_TRANSLATION = {
   country: 'country',
   birthdate: 'birthdate',
   save: 'save',
+  requiredField: 'required field',
+  invalidEmailWarning: 'insert a valid email',
+  selectCountry: 'select a country',
 };
