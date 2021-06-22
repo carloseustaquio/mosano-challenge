@@ -4,6 +4,7 @@ declare module 'styled-components' {
 			primary: string,
 			secondary: string,
 			text: string,
+			lightText: string,
 			gradients: {
 				background: string,
 				main: string,
@@ -17,6 +18,7 @@ export const defaultTheme = {
     primary: '#1e22aa',
     secondary: '#e31c79',
     text: '#0c0d44',
+    lightText: '#aaa',
     gradients: {
       background:
 				'linear-gradient(188deg, hsla(0, 0%, 100%, 0), ' +

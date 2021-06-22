@@ -4,6 +4,7 @@ import {useAppDispatch} from '#/state/hooks';
 import {closeModalAction, loginAction} from '#/state/slices/application';
 
 import {Button} from '../button/button';
+import {Input} from '../input/input';
 
 export const LoginForm = () => {
   const history = useHistory();
@@ -21,6 +22,8 @@ export const LoginForm = () => {
   return (
     <>
       <div>Login Form</div>
+      <Input placeholder="email" type="email" />
+      <Input placeholder="password" type="password" />
       <Button onClick={handleLogin}>LOGIN</Button>
     </>
   );
