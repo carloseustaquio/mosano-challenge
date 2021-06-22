@@ -1,8 +1,8 @@
 import {RouteProps, BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
-import {Home} from '#/presentation/pages/home';
+import {Home} from '#/presentation/pages/home/home';
 import BasePrivateRoute from '#/presentation/components/private-route/private-route';
-import {Revisited} from '#/presentation/pages/revisited';
+import {Revisited} from '#/presentation/pages/revisited/revisited';
 import {useAppSelector} from '#/state/hooks';
 
 const Router: React.FC = () => {

@@ -1,7 +1,5 @@
 import {httpClientSingleton} from '#/main/http-client/http-client-singleton';
-import {Navbar} from '#/presentation/components/navbar/navbar';
-
-import {Modal} from '../components/modal/modal';
+import {Screen} from '#/presentation/components/screen/screen';
 
 export const Revisited = () => {
   const handlePut = async () => {
@@ -22,10 +20,8 @@ export const Revisited = () => {
   };
 
   return (
-    <div>
-      <Navbar />
+    <Screen>
       <button onClick={handlePut}>put data</button>
-      <Modal />
-    </div>
+    </Screen>
   );
 };

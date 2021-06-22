@@ -9,8 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 	  color: ${({theme}) => theme.colors.text};
   }
 
-  html {
-    min-height: 100%;
+  html, body, #root {
+    min-height: 100vh;
   }
 
   body {

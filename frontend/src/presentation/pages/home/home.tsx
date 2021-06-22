@@ -5,9 +5,7 @@ import {User} from '#/domain/entities/user';
 import {useAppSelector, useAppDispatch} from '#/state/hooks';
 import {greetUserAction} from '#/state/slices/user';
 import {getCountriesAction} from '#/state/slices/country';
-import {Navbar} from '#/presentation/components/navbar/navbar';
-
-import {Modal} from '../components/modal/modal';
+import {Screen} from '#/presentation/components/screen/screen';
 
 export const Home = () => {
   const {t} = useTranslation();
@@ -31,8 +29,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
-      <Navbar />
+    <Screen>
       <div>{t('date', {date: new Date()})}</div>
       {users.map((user) => (
         <button key={user.id} onClick={() => handleGreetUser(user)}>{user.name}</button>
@@ -45,7 +42,6 @@ export const Home = () => {
         {greetedUser?.surname}
         {greetedUser?.birthdate}
       </strong>
-      <Modal />
-    </div>
+    </Screen>
   );
 };

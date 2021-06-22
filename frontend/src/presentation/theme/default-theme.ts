@@ -23,7 +23,7 @@ export const defaultTheme = {
       background:
 				'linear-gradient(188deg, hsla(0, 0%, 100%, 0), ' +
 				'rgba(141, 144, 255, .3)), linear-gradient(180deg, #fff, #fff)',
-      main: 'linear-gradient(180deg, #1e22aa, #e31c79)',
+      main: 'linear-gradient(90deg, #1e22aa, #e31c79)',
     },
   },
 };
