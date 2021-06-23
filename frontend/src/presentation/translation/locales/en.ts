@@ -27,4 +27,6 @@ export const EN_TRANSLATION = {
   greeting: 'Hello {{name}} from {{country}}, on {{day}} of {{month}} you will be {{age}} years old!',
   invalidDateFormatWarning: 'invalid date format (mm-dd-yyyy)',
   actions: 'actions',
+  editUserError: 'Error editing user',
+  edit: 'edit',
 };

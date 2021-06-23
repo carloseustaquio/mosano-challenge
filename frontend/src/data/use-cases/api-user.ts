@@ -48,4 +48,27 @@ export class ApiUserUseCase implements UserUseCases {
       throw new Error('error deleting user');
     }
   }
+
+  public async editUser(user: User): Promise<User> {
+    console.log(user);
+    const response = await this.httpClient.request({
+      method: 'put',
+      path: `/user/${user.id}`,
+      data: {
+        name: user.name,
+        surname: user.surname,
+        country: user.country,
+        birthdate: user.birthdate,
+      },
+    });
+
+    if (!response.hasStatus(StatusCodes.OK)) {
+      throw new Error('error editing user');
+    }
+
+    const updatedUser = response.getData(User);
+    updatedUser.birthdate = new Date(user.birthdate);
+
+    return updatedUser;
+  }
 }

@@ -3,7 +3,7 @@ import {ReactNodeArray, useEffect} from 'react';
 import {useTranslation} from '#/presentation/translation/translation';
 import {useAppDispatch, useAppSelector} from '#/state/hooks';
 import {Table} from '#/presentation/components/table/table';
-import {deleteUserAction, getUsersAction, greetUserAction} from '#/state/slices/user';
+import {deleteUserAction, getUsersAction, greetUserAction, setUserFormStateAction} from '#/state/slices/user';
 import {User} from '#/domain/entities/user';
 
 import {Actions} from './users-table-actions/actions';
@@ -17,7 +17,7 @@ export const UsersTable = () => {
   }));
 
   const handleEditUser = (user: User) => {
-    console.log(user);
+    dispatch(setUserFormStateAction(user));
   };
 
   const handleDeleteUser = (id: string) => {
