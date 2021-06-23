@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {ReactNodeArray, useEffect} from 'react';
 
 import {useTranslation} from '#/presentation/translation/translation';
 import {useAppDispatch, useAppSelector} from '#/state/hooks';
@@ -24,16 +24,32 @@ export const UsersTable = () => {
     console.log(id);
   };
 
-  const headers = [t('name'), t('country'), t('birthdate'), t('actions')];
-  const data = users.map((user) => ({
-    id: user.id,
-    data: [
+  const getHeaders = () => {
+    const headers = [t('name'), t('country'), t('birthdate')];
+    if (isLogged) headers.push(t('actions'));
+    return headers;
+  };
+
+  const data = users.map((user) => {
+    const baseData: Array<{} | ReactNodeArray> = [
       `${user.name} ${user.surname}`,
       user.country.name,
       t('date', {date: user.birthdate}),
-      <Actions key={user.id} onEdit={() => handleEditUser(user)} onDelete={() => handleDeleteUser(user.id)} />,
-    ],
-  }));
+    ];
+
+    if (isLogged) {
+      baseData.push(
+        <Actions
+          key={user.id}
+          onEdit={() =>
+            handleEditUser(user)}
+          onDelete={() => handleDeleteUser(user.id)}
+        />,
+      );
+    };
+
+    return {id: user.id, data: baseData};
+  });
 
   const handleRowClick = (id: string) => {
     const user = users.find((u) => u.id === id) as User;
@@ -49,6 +65,6 @@ export const UsersTable = () => {
   }, []);
 
   return (
-    <Table onRowClick={handleRowClick} headers={headers} data={data} />
+    <Table onRowClick={handleRowClick} headers={getHeaders()} data={data} />
   );
 };

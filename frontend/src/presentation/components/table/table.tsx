@@ -20,20 +20,23 @@ export const Table = ({headers, data, onRowClick}: Props) => {
 
   return (
     <Container>
-      <thead>
-        <tr>
-          {headers.map((h) => <th key={h}>{h}</th>)}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row, rowIndex) =>
-          <tr key={rowIndex}>
-            {row.data.map((item, itemIndex) =>
-              <td onClick={() => handleClick(row.id, item)} key={`${rowIndex}-${itemIndex}`}>{item}</td>,
-            )}
-          </tr>,
-        )}
-      </tbody>
+      <table>
+        <thead>
+          <tr>
+            {headers.map((h) => <th key={h}>{h}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((row, rowIndex) =>
+            <tr key={rowIndex}>
+              {row.data.map((item, itemIndex) =>
+                <td onClick={() => handleClick(row.id, item)} key={`${rowIndex}-${itemIndex}`}>{item}</td>,
+              )}
+            </tr>,
+          )}
+        </tbody>
+
+      </table>
     </Container>
   );
 };
