@@ -30,8 +30,7 @@ export const applicationState = createSlice({
       if (accessToken) {
         httpClientSingleton.setAuthorization(accessToken);
       }
-      state.modal = {open: false, component: null};
-      return state;
+      return {...action.payload.applicationState, modal: initialState.modal};
     });
 
     builder.addCase(login.fulfilled, (state, action) => {

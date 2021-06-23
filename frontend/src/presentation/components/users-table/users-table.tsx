@@ -3,7 +3,7 @@ import {ReactNodeArray, useEffect} from 'react';
 import {useTranslation} from '#/presentation/translation/translation';
 import {useAppDispatch, useAppSelector} from '#/state/hooks';
 import {Table} from '#/presentation/components/table/table';
-import {getUsersAction, greetUserAction} from '#/state/slices/user';
+import {deleteUserAction, getUsersAction, greetUserAction} from '#/state/slices/user';
 import {User} from '#/domain/entities/user';
 
 import {Actions} from './users-table-actions/actions';
@@ -21,7 +21,7 @@ export const UsersTable = () => {
   };
 
   const handleDeleteUser = (id: string) => {
-    console.log(id);
+    dispatch(deleteUserAction(id));
   };
 
   const getHeaders = () => {
@@ -41,8 +41,7 @@ export const UsersTable = () => {
       baseData.push(
         <Actions
           key={user.id}
-          onEdit={() =>
-            handleEditUser(user)}
+          onEdit={() => handleEditUser(user)}
           onDelete={() => handleDeleteUser(user.id)}
         />,
       );

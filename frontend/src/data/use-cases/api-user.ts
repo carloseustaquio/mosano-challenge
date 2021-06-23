@@ -37,4 +37,15 @@ export class ApiUserUseCase implements UserUseCases {
 
     return newUser;
   }
+
+  public async deleteUser(id: string): Promise<void> {
+    const response = await this.httpClient.request({
+      method: 'delete',
+      path: `/user/${id}`,
+    });
+
+    if (!response.hasStatus(StatusCodes.OK)) {
+      throw new Error('error deleting user');
+    }
+  }
 }
