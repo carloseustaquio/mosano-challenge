@@ -26,4 +26,5 @@ export const PT_TRANSLATION = {
   selectCountry: 'selecione um país',
   greeting: 'Olá {{name}} de {{country}}, no dia {{day}} de {{month}} voce terá {{age}} anos!',
   invalidDateFormatWarning: 'formato de data inválido (dd/mm/yyyy)',
+  actions: 'ações',
 };

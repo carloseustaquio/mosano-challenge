@@ -1,8 +1,10 @@
+import {ReactNodeArray} from 'react';
+
 import {Container} from './table-style';
 
 type Row = {
   id: string,
-  data: string[]
+  data: Array<{} | ReactNodeArray>
 }
 
 type Props = {
@@ -12,8 +14,8 @@ type Props = {
 }
 
 export const Table = ({headers, data, onRowClick}: Props) => {
-  const handleClick = (id: string) => {
-    onRowClick(id);
+  const handleClick = (id: string, item: {} | ReactNodeArray) => {
+    if (typeof item === 'string') onRowClick(id);
   };
 
   return (
@@ -25,9 +27,9 @@ export const Table = ({headers, data, onRowClick}: Props) => {
       </thead>
       <tbody>
         {data.map((row, rowIndex) =>
-          <tr onClick={() => handleClick(row.id)} key={rowIndex}>
+          <tr key={rowIndex}>
             {row.data.map((item, itemIndex) =>
-              <td key={`${rowIndex}-${itemIndex}`}>{item}</td>,
+              <td onClick={() => handleClick(row.id, item)} key={`${rowIndex}-${itemIndex}`}>{item}</td>,
             )}
           </tr>,
         )}
