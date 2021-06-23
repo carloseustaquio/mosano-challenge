@@ -22,12 +22,10 @@ export const userState = createSlice({
       return initialState;
     },
     setUserFormState: (state, action: PayloadAction<User>) => {
-      const {id, name, surname, birthdate, country} = action.payload;
+      const {birthdate, country, ...props} = action.payload;
       return {...state, userFormInitialState: {
-        id,
+        ...props,
         isEditing: true,
-        name,
-        surname,
         birthdate: birthdate.toDateString(),
         countryId: country.id,
       }};

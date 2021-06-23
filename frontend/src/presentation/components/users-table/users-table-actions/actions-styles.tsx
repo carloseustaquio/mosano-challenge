@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 		&:hover{
 			rect, path, polygon {
-				fill: ${({theme}) => theme.colors.primary};
+				fill: ${({theme}) => theme.colors.warning};
 			}
 		}
 	}

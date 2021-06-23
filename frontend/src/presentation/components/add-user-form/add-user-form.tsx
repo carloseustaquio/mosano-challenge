@@ -22,21 +22,23 @@ export const AddUserForm = () => {
   const {t} = useTranslation();
   const dispatch = useAppDispatch();
 
-  const parseUserToForm = (formState: UserFormState) => {
-    const {birthdate} = formState;
-    const formattedBirthDate = birthdate === '' ? birthdate : format(new Date(birthdate), t('dateFnsFormat'));
-    return {...formState, birthdate: formattedBirthDate};
+  const parseDateToForm = (date: string) => {
+    if (date === '') return date;
+    else return format(new Date(date), t('dateFnsFormat'));
   };
 
   const {countries, initialFormState} = useAppSelector(({countryState, userState}) => ({
     countries: countryState.countries,
-    initialFormState: parseUserToForm(userState.userFormInitialState),
+    initialFormState: {
+      ...userState.userFormInitialState,
+      birthdate: parseDateToForm(userState.userFormInitialState.birthdate),
+    },
   }));
 
   const parseFormToUser = (values: UserFormState): User => {
     const country = countries.find((c) => c.id == values.countryId);
     const parsedDate = parse(values.birthdate, t('dateFnsFormat'), new Date());
-    const id = values.id === '' ? uuid() : values.id;
+    const id = values.isEditing ? values.id : uuid();
     return new User(
       id,
       values.name,
@@ -70,8 +72,10 @@ export const AddUserForm = () => {
   const handleSubmit = async (values: UserFormState, formikHelpers: FormikHelpers<UserFormState>) => {
     formikHelpers.setSubmitting(true);
     let success = false;
+
     if (values.isEditing) success = await handleEditUser(values);
     else success = await handleAddNewUser(values);
+
     if (success) {
       dispatch(clearUserFormState());
       formikHelpers.resetForm();
