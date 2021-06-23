@@ -1,6 +1,7 @@
 export const EN_TRANSLATION = {
   title: 'Mosano Challenge',
   date: '{{-date, MM-dd-yyyy}}',
+  dateFnsFormat: 'MM-dd-yyyy',
   dateFormat: '99-99-9999',
   challenge: 'challenge',
   login: 'login',
@@ -23,4 +24,5 @@ export const EN_TRANSLATION = {
   requiredField: 'required field',
   invalidEmailWarning: 'insert a valid email',
   selectCountry: 'select a country',
+  greeting: 'Hello {{name}} from {{country}}, on {{day}} of {{month}} you will be {{age}} years old!',
 };

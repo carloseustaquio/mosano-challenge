@@ -10,7 +10,10 @@ export const userState = createSlice({
   initialState,
   reducers: {
     greetUser: (state, action: PayloadAction<User>) => {
-      return {...state, greetedUser: action.payload};
+      return {...state, greetedUser: action.payload, showGreetUser: true};
+    },
+    removeGreetUser: (state) => {
+      return {...state, showGreetUser: false};
     },
   },
   extraReducers: (builder) => {
@@ -24,5 +27,6 @@ export const userState = createSlice({
 });
 
 export const greetUserAction = userState.actions.greetUser;
+export const removeGreetUserAction = userState.actions.removeGreetUser;
 export const getUsersAction = getUsers;
 export const addUserAction = addUser;

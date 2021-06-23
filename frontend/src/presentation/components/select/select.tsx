@@ -31,7 +31,7 @@ export const Select = (props: Props) => {
     <>
       <Container disabledStyle={disabledStyle}>
         <select {...props}>
-          {props.placeholder && <option value="" disabled selected>{props.placeholder}</option>}
+          {props.placeholder && <option value="" disabled>{props.placeholder}</option>}
           {props.children}
         </select>
       </Container>

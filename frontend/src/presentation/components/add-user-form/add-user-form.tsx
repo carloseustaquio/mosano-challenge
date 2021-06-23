@@ -1,6 +1,7 @@
 import {Formik, Field, FormikHelpers} from 'formik';
 import {useState, useEffect} from 'react';
 import {v1 as uuid} from 'uuid';
+import {parse} from 'date-fns';
 
 import {Country} from '#/domain/entities/country';
 import {Input} from '#/presentation/components/input/input';
@@ -42,12 +43,14 @@ export const AddUserForm = ({formState = initialFormState}: Props) => {
   const handleSubmit = async (values: FormState, formikHelpers: FormikHelpers<FormState>) => {
     formikHelpers.setSubmitting(true);
     const country = countries.find((c) => c.id == values.countryId);
+    const parsedDate = parse(values.birthdate, t('dateFnsFormat'), new Date());
+
     const user = new User(
       uuid(),
       values.name,
       values.surname,
       country as Country,
-      new Date(values.birthdate),
+      parsedDate,
     );
     const actionResult = await dispatch(addUserAction(user));
 
@@ -77,7 +80,7 @@ export const AddUserForm = ({formState = initialFormState}: Props) => {
           <h2>{t('addUserInstruction')}</h2>
           <Field name="name" placeholder={t('name')} as={Input} />
           <Field name="surname" placeholder={t('surname')} as={Input} />
-          <Field as={Select} name="countryId" placeholder={t('selectCountry')} autocomplete={false}>
+          <Field as={Select} name="countryId" placeholder={t('selectCountry')}>
             {countries.map((country) => (
               <option key={country.id} value={country.id}>{country.name}</option>
             ))}

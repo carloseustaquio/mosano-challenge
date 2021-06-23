@@ -6,9 +6,9 @@ type Props = {
   children: {} | ReactNodeArray
 }
 
-export const Card = ({children}: Props) => {
+export const Card = ({children, ...props}: Props) => {
   return (
-    <Container>
+    <Container {...props}>
       {children}
     </Container>
   );

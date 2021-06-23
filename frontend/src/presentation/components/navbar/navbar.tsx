@@ -21,13 +21,9 @@ export const Navbar = () => {
   };
 
   const handleConfirmLogout = () => {
-    try {
-      dispatch(logoutAction());
-      dispatch(closeModalAction());
-      history.replace('/home');
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(logoutAction());
+    dispatch(closeModalAction());
+    history.replace('/home');
   };
 
   const handleLogout = async () => {

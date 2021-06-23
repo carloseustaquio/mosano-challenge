@@ -5,7 +5,6 @@ export const Form = styled(BaseForm)`
 	display: flex;
 	flex-flow: column;
 	row-gap: 8px;
-	width: 45%;
 
 	> h2 {
   	color: ${({theme}) => theme.colors.primary};
