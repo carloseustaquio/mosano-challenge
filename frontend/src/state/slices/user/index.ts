@@ -15,9 +15,13 @@ export const userState = createSlice({
     removeGreetUser: (state) => {
       return {...state, showGreetUser: false};
     },
+    clearUsers: () => {
+      return initialState;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
+      console.log(action.payload);
       return {...state, users: action.payload};
     });
     builder.addCase(addUser.fulfilled, (state, action: PayloadAction<User>) => {
@@ -28,5 +32,6 @@ export const userState = createSlice({
 
 export const greetUserAction = userState.actions.greetUser;
 export const removeGreetUserAction = userState.actions.removeGreetUser;
+export const clearUsersAction = userState.actions.clearUsers;
 export const getUsersAction = getUsers;
 export const addUserAction = addUser;

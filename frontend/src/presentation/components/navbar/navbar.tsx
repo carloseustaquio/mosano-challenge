@@ -5,10 +5,11 @@ import {closeModalAction, logoutAction, openModalAction} from '#/state/slices/ap
 import {useAppDispatch, useAppSelector} from '#/state/hooks';
 import {languages, setLanguage} from '#/presentation/translation/translation';
 import {LoginForm} from '#/presentation/components/login-form/login-form';
+import {clearUsersAction} from '#/state/slices/user';
+import {ConfirmationForm} from '#/presentation/components/confirmation-form/confirmation-form';
 
 import {imgSrc} from './logo';
 import {Container, Logo, LoginLink, Language, LanguagesWrapper, LeftSide} from './navbar-styles';
-import {ConfirmationForm} from '../confirmation-form/confirmation-form';
 
 export const Navbar = () => {
   const history = useHistory();
@@ -22,6 +23,7 @@ export const Navbar = () => {
 
   const handleConfirmLogout = () => {
     dispatch(logoutAction());
+    dispatch(clearUsersAction());
     dispatch(closeModalAction());
     history.replace('/home');
   };

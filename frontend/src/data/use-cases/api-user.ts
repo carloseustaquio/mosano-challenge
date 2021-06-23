@@ -12,7 +12,13 @@ export class ApiUserUseCase implements UserUseCases {
       method: 'get',
       path: '/user',
     });
-    return response.getArrayData(User);
+
+    const users = response.getArrayData(User).map((user) => {
+      user.birthdate = new Date(user.birthdate);
+      return user;
+    });
+
+    return users;
   }
 
   public async addUser(user: User): Promise<User> {
@@ -26,6 +32,9 @@ export class ApiUserUseCase implements UserUseCases {
       throw new Error('error creating user');
     }
 
-    return response.getData(User);
+    const newUser = response.getData(User);
+    newUser.birthdate = new Date(user.birthdate);
+
+    return newUser;
   }
 }

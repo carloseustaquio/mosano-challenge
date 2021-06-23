@@ -9,9 +9,9 @@ User,
 User,
 AsyncThunkConfig
 >('user/addUsers', async (params, thunkAPI) => {
-  const state = thunkAPI.getState() as ApplicationState;
+  const {applicationState: {isLogged}} = thunkAPI.getState() as {applicationState: ApplicationState};
 
-  if (!state.isLogged) return params;
+  if (!isLogged) return params;
 
   try {
     const result = await thunkAPI.extra.userUseCases.addUser(params);
@@ -19,4 +19,5 @@ AsyncThunkConfig
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
-});
+},
+);

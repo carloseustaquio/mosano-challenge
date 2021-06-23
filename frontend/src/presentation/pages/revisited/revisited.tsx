@@ -1,27 +1,20 @@
-import {httpClientSingleton} from '#/main/http-client/http-client-singleton';
 import {Screen} from '#/presentation/components/screen/screen';
+import {AddUserForm} from '#/presentation/components/add-user-form/add-user-form';
+import {Greeting} from '#/presentation/components/greeting/greeting';
+import {UsersTable} from '#/presentation/components/users-table/users-table';
+
+import {Card, GreetingWrapper} from './revisited-styles';
 
 export const Revisited = () => {
-  const handlePut = async () => {
-    const response = await httpClientSingleton.request({
-      method: 'post',
-      path: '/user',
-      data: {
-        'name': 'Carlos1',
-        'surname': 'Eustáquio',
-        'birthdate': '1999-06-22',
-        'country': {
-          'id': '1',
-          'name': 'Brasil',
-        },
-      },
-    });
-    console.log(response.getRawData());
-  };
-
   return (
     <Screen>
-      <button onClick={handlePut}>put data</button>
+      <Card>
+        <AddUserForm />
+        <UsersTable/>
+        <GreetingWrapper>
+          <Greeting />
+        </GreetingWrapper>
+      </Card>
     </Screen>
   );
 };
