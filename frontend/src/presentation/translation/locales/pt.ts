@@ -25,4 +25,5 @@ export const PT_TRANSLATION = {
   invalidEmailWarning: 'digite um email válido',
   selectCountry: 'selecione um país',
   greeting: 'Olá {{name}} de {{country}}, no dia {{day}} de {{month}} voce terá {{age}} anos!',
+  invalidDateFormatWarning: 'formato de data inválido (dd/mm/yyyy)',
 };
