@@ -25,6 +25,6 @@ export const FormAndTableWrapper = styled.div`
 `;
 
 export const GreetingWrapper = styled.div`
-	height: 100px;
+	/* height: 100px; */
 	padding-top: 40px;
 `;

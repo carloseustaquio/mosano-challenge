@@ -7,15 +7,23 @@ export const Container = styled.div<{show: boolean}>`
 	margin: 0 auto;
 	padding: 0 32px;
 	opacity: 0.85;
-	height: ${({show}) => show ? 60 : 0}px;
 	display: flex;
 	align-items: center;
-	transition: height 0.2s ease-in-out;
 	cursor: pointer;
+	height: ${({show}) => show ? 150 : 0}px;
+	transition: height 0.2s ease-in-out;
 
 	div {
 		text-align: center;
 		color: #fff;
 		font-family: 'Poppins', sans-serif; 
+	}
+
+	@media screen and (min-width: 550px) {
+		height: ${({show}) => show ? 90 : 0}px;
+	}
+
+	@media screen and (min-width: 900px) {
+		height: ${({show}) => show ? 60 : 0}px;
 	}
 `;
