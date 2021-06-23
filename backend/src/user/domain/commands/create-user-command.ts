@@ -8,6 +8,6 @@ export class CreateUserCommand {
 
 	public async create(user: User): Promise<void> {
 	  const createdUser = await this.createUserRepository.create(user);
-	  this.onSuccess(createdUser.withNextBirthdayAndAge());
+	  this.onSuccess(createdUser);
 	}
 }

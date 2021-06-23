@@ -13,7 +13,7 @@ export class UpdateUserCommand {
 	public async update(user: User): Promise<void> {
 	  try {
 	    const updatedUser = await this.updateUserRepository.update(user);
-	    this.onSuccess(updatedUser.withNextBirthdayAndAge());
+	    this.onSuccess(updatedUser);
 	  } catch (error) {
 	    this.handleErrors(error);
 	  }
