@@ -30,7 +30,8 @@ export const applicationState = createSlice({
       if (accessToken) {
         httpClientSingleton.setAuthorization(accessToken);
       }
-      return {...action.payload.applicationState, modal: initialState.modal};
+      const applicationState = action.payload?.applicationState || initialState;
+      return {...applicationState, modal: initialState.modal};
     });
 
     builder.addCase(login.fulfilled, (state, action) => {
