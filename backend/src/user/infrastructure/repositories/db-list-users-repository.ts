@@ -1,15 +1,13 @@
 import {User} from '#/user/domain/entities/user';
 import {ListUsersRepository} from '#/user/domain/repositories/list-users-repository';
-import {inMemoryUserTable} from '#/user/infrastructure/in-memory-user-table';
+import {UserModel} from '#/user/infrastructure/models/user-model';
 
 export class DbListUsersRepository implements ListUsersRepository {
-	private readonly dbClient = inMemoryUserTable
+	private readonly model = UserModel;
 
-	public getUsers(): Promise<User[]> {
-	  const users = [];
-	  for (const user of this.dbClient.values()) {
-	    users.push(user);
-	  }
-	  return Promise.resolve(users);
+	public async getUsers(): Promise<User[]> {
+	  const users = await this.model.find();
+
+	  return users.map((user) => user.toDomain());
 	}
 }

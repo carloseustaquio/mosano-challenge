@@ -1,9 +1,11 @@
 import {Country} from '#/country/domain/entities/country';
 import {ListCountriesRepository} from '#/country/domain/repositories/list-countries-repository';
+import {CountryModel} from '#/country/infrastructure/models/country-model';
 
 export class DbListCountriesRepository implements ListCountriesRepository {
+  private readonly model = CountryModel
   public async getCountries(): Promise<Country[]> {
-    const countries = [new Country('1', 'Brasil'), new Country('2', 'Portugal')];
-    return Promise.resolve(countries);
+	  const countries = await this.model.find();
+	  return countries.map((country) => country.toDomain());
   }
 }

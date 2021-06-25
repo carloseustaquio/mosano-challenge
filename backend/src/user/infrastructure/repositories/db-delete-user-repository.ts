@@ -1,13 +1,10 @@
-import {UserNotFound} from '#/user/domain/errors/user-not-found-error';
 import {DeleteUserRepository} from '#/user/domain/repositories/delete-user-repository';
-import {inMemoryUserTable} from '#/user/infrastructure/in-memory-user-table';
+import {UserModel} from '#/user/infrastructure/models/user-model';
 
 export class DbDeleteUserRepository implements DeleteUserRepository {
-	private readonly dbClient = inMemoryUserTable
+	private readonly model = UserModel
 
-	public delete(id: string): Promise<void> {
-	  if (!this.dbClient.has(id)) throw new UserNotFound();
-	  this.dbClient.delete(id);
-	  return Promise.resolve();
+	public async delete(id: string): Promise<void> {
+	  await this.model.deleteOne({id});
 	}
 }

@@ -1,23 +1,25 @@
 import {LoginCredentials} from '#/authentication/domain/entities/login-credentials';
 import {InvalidCredentials} from '#/authentication/domain/errors/invalid-credentials-error';
 import {LoginService} from '#/authentication/domain/services/login-service';
-import inMemoryDb from '#/authentication/infrastructure/in-memory-db';
 import {TokenService} from '#/common/services/token-service';
+import {TokenModel} from '#/authentication/infrastructure/models/token-model';
+import {SignedUserModel} from '#/authentication/infrastructure/models/signed-user-model';
 
 export class DbLoginService implements LoginService {
-	private readonly dbClient = inMemoryDb
+	private readonly tokenModel = TokenModel
+	private readonly signedUserModel = SignedUserModel
 	private readonly tokenService = new TokenService()
 
 	public async login(credentials: LoginCredentials): Promise<string> {
-	  const password = this.dbClient.signedUsersTable.get(credentials.email);
+	  const signedUser = await this.signedUserModel.findOne({email: credentials.email});
 
-	  if (!password || password !== credentials.password) {
+	  if (!signedUser || signedUser.password !== credentials.password) {
 	    throw new InvalidCredentials();
 	  }
 
 	  const token = this.tokenService.generateToken(credentials.email);
 
-	  this.dbClient.loginTable.set(token, true);
+	  this.tokenModel.create({token});
 
 	  return token;
 	}
