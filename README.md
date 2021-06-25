@@ -2,6 +2,8 @@
 
 > An example worth more than a thousand words
 
+https://user-images.githubusercontent.com/43277022/123365089-f8e5b800-d54b-11eb-8f6c-8fd8f13a7a7a.mp4
+
 ## Proposal 💭
 
 Develop a web platform with the given interface that allows the users to register heir full name, country, and birthday.\
