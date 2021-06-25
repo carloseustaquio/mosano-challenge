@@ -67,3 +67,10 @@ cd frontend      // open frontend directory
 yarn             // install dependencies
 yarn start       // start project
 ```
+
+## It would be good to notice that... 👀
+
+
+|App is 100% responsive]          |Even the table component!|All form fields have validation|
+|---------------------------------|-------------------------|-------------------------------|
+|![image](https://user-images.githubusercontent.com/43277022/123365401-95a85580-d54c-11eb-8aca-585dd69aaaf1.png)|![image](https://user-images.githubusercontent.com/43277022/123365785-5c241a00-d54d-11eb-9cd6-0f252dc85126.png)|![image](https://user-images.githubusercontent.com/43277022/123365828-76f68e80-d54d-11eb-9e1a-c698c5563c81.png)|
