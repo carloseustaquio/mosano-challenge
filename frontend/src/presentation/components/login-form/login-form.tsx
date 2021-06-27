@@ -44,7 +44,7 @@ export const LoginForm = () => {
       onSubmit={handleLogin}
     >
       {({submitForm}) => (
-        <Form>
+        <Form data-testid='login-form'>
           <h3>{t('loginGreeting')}</h3>
           <Field name="email" placeholder={t('email')} as={Input} />
           <Field name="password" placeholder={t('password')} type="password" as={Input} />

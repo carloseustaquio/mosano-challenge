@@ -14,8 +14,8 @@ export const Modal = () => {
   if (!modal) return <div />;
   return (
     <>
-      <Background onClick={handleClose} show={modal.open} />
-      <Container show={modal.open}>{modal.component}</Container>
+      <Background data-testid='modal-background' onClick={handleClose} show={modal.open} />
+      <Container data-testid='modal-container' show={modal.open}>{modal.component}</Container>
     </>
   );
 };

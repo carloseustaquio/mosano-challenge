@@ -18,7 +18,9 @@ export const Navbar = () => {
   const isLogged = useAppSelector(({applicationState}) => applicationState.isLogged);
 
   const handleLogin = async () => {
-    dispatch(openModalAction(<LoginForm/>));
+    dispatch(openModalAction(
+      <LoginForm/>,
+    ));
   };
 
   const handleConfirmLogout = () => {
@@ -42,7 +44,7 @@ export const Navbar = () => {
     <Container>
       <Logo>
       	<img src={imgSrc} alt="Mosano Logo" />
-        <p>{t('challenge')}</p>
+        <p data-testid='logo-label'>{t('challenge')}</p>
       </Logo>
       <LeftSide>
         <LanguagesWrapper>
@@ -51,14 +53,16 @@ export const Navbar = () => {
               <Language
                 onClick={() => setLanguage(language.name)}
                 src={language.icon}
-                key={language.name} />),
+                key={language.name}
+                alt={'translate-toggle-' + language.name}
+              />),
             )
           }
         </LanguagesWrapper>
         {
           !isLogged ?
-      		<LoginLink onClick={handleLogin}>{t('login')}</LoginLink> :
-      		<LoginLink onClick={handleLogout}>{t('logout')}</LoginLink>
+      		<LoginLink data-testid='login-link' onClick={handleLogin}>{t('login')}</LoginLink> :
+      		<LoginLink data-testid='logout-link' onClick={handleLogout}>{t('logout')}</LoginLink>
         }
       </LeftSide>
     </Container>
