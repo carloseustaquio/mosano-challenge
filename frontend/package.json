@@ -44,6 +44,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "test:noWatch": "craco test --watch=false --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx .",
     "lint:fix": "yarn lint --fix"

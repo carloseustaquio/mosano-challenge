@@ -9,7 +9,8 @@
 		"lint:frontend": "cd frontend && yarn lint:fix",
 		"lint:backend": "cd backend && yarn lint:fix",
 		"dev:backend": "cd backend && yarn dev",
-		"dev:frontend": "cd frontend && yarn start"
+		"dev:frontend": "cd frontend && yarn start",
+		"test:frontend": "cd frontend && yarn test:noWatch"
 	},
 	"lint-staged": {
 		"frontend/**/*.+(ts|tsx)": [
