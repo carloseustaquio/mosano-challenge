@@ -12,7 +12,7 @@ type Props = {
 
 export const Screen = ({children}: Props) => {
   return (
-    <Container>
+    <Container data-testid="screen-container">
       <Navbar />
       <Main>
         {children}

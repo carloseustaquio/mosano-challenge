@@ -112,10 +112,9 @@ If you want to login, I've seed 3 default accounts on the db! Here are them:
 
 Well, after 7 days, a weekend lost (or invested?), and hours and hours of work, I decided it was the time to finish this project. Unfortunately, I didn't have time to setup the test environments for it. As configuring Jest, React Testing Library, Cypress (w/ Typescript, Eslint, etc) is a non trivial task (witch we don't do every day btw) and would take some time and research, I decided to leave it as it is for now. But definitely it's a big of a "TODO", that couldn't be neglected in a real project. So, here it is:
 
-- [ ] Add tests setup for /frontend
+- [x] Add tests setup for /frontend
 - [ ] Add tests setup for /backend
-- [ ] Test stuff bro
-- [ ] Be less lazy next time
+- [ ] Test stuff bro (started! o/)
 
 ## The end 🔚
 

@@ -41,7 +41,7 @@ export const Navbar = () => {
   };
 
   return (
-    <Container>
+    <Container data-testid='navbar-container'>
       <Logo>
       	<img src={imgSrc} alt="Mosano Logo" />
         <p data-testid='logo-label'>{t('challenge')}</p>
